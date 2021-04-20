@@ -19,7 +19,7 @@
 在所有人要求的基础上
 
 2. Kraus的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/251/）；
-3. Pozar的微波工程过一遍；
+3. Pozar的微波工程过一遍（配套练习https://tbc-python.fossee.in/book-details/814/）；
 4. Stanford的Writting in Science过一遍；
 5. MIT Walter Lewin的电磁学视频过一遍；
 6. 完成Learn Python the Hard Way的学习；
@@ -35,7 +35,7 @@
 在本科要求的基础上
 
 1. 梁昌洪的简明微波过一遍；
-2. Balanis的天线书过一遍；
+2. Balanis的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/876/）；
 3. Gilbert Strang的Introduction to Linear Algebra视频过一遍；
 4. Chu极限推导《PHYSICAL LIMITATIONS OF OMNIDIRECTIONAL ANTENNAS》；
 5. 选一种算法，分别实现dipole，patch，slot天线的电磁计算
