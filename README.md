@@ -16,7 +16,7 @@ The path to an EM expert
 6. 在学术讨论中，相互之间尽量坦诚，有问题一定要指出来；
 7. 如果没有特殊情况，按时参加组会（包括现场和线上）。遇到不能参加或者迟到的情况，需要在群组中向大家说明；
 8. 有新人加入时，每个人需简单介绍一下自己：家乡在哪里？有几个兄弟姐妹？童年经历过什么挑战？个人爱好？讲一个发生在自己身上的笑话（别人不笑很正常）;
-9. 时常提醒自己，如果现在写一份求职简历，应该呈现出哪些闪光点
+9. 时常提醒自己，如果现在写一份求职简历，应该呈现出哪些闪光点；
 
 #### 本科
 
@@ -42,9 +42,9 @@ The path to an EM expert
 2. Balanis的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/876/）；
 3. Gilbert Strang的Introduction to Linear Algebra视频过一遍；
 4. Chu极限推导《PHYSICAL LIMITATIONS OF OMNIDIRECTIONAL ANTENNAS》；
-5. 选一种算法，分别实现dipole，patch，slot天线的电磁计算
+5. 选一种算法，分别实现dipole，patch，slot天线的电磁计算；
 6. 每一期新出的TAP和AWPL都必须要快速浏览一遍，且形成简要文档记录；
-7. 帮助维护组里的文献库（都是哪些牛组在做什么方向）
+7. 帮助维护组里的文献库（都是哪些牛组在做什么方向）；
 8. 帮助维护组里共用的Python库；
 
 #### 博士
