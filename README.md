@@ -25,12 +25,13 @@ The path to an EM expert
 2. Pozar的微波工程过一遍（配套练习https://tbc-python.fossee.in/book-details/814/）；
 3. Stanford的Writting in Science过一遍；
 4. MIT Walter Lewin的电磁学视频过一遍；
-5. 完成Learn Python the Hard Way的学习；
-6. 使用并帮助维护组里共用的Python库来做仿真工作和数据处理；
-7. 阅读天线领域大牛们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）；
-8. 每周一次文献学习会，每人分享对一篇文章的理解；
-9. 做研究记录和整理回顾；
-10. 自觉设置进度条，每次讨论完都约下次的讨论时间和讨论内容；
+5. 费曼物理学讲义的电磁部分过一遍；
+6. 完成Learn Python the Hard Way的学习；
+7. 使用并帮助维护组里共用的Python库来做仿真工作和数据处理；
+8. 阅读天线领域大牛们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）；
+9. 每周一次文献学习会，每人分享对一篇文章的理解；
+10. 做研究记录和整理回顾；
+11. 自觉设置进度条，每次讨论完都约下次的讨论时间和讨论内容；
 
 #### 硕士
 
