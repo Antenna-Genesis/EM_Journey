@@ -31,9 +31,10 @@ The path to an EM expert
 6. 完成Learn Python the Hard Way的学习（https://github.com/ubarredo/LearnPythonTheHardWay）；
 7. 使用并帮助维护组里共用的Python库来做仿真工作和数据处理；
 8. 阅读天线领域大牛们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）；
-9. 每周一次文献学习会，每人分享对一篇文章的理解；
-10. 做研究记录和整理回顾。如无特殊情况，例会时候需要展示之前工作的总结；
-11. 自觉设置进度条，每次讨论完都约下次的讨论时间和讨论内容；
+9. 阅读近30年来IEEE APS的获奖文章（https://ieeeaps.org/about-the-transactions/best-paper-awards）；
+10. 每周一次文献学习会，每人分享对一篇文章的理解；
+11. 做研究记录和整理回顾。如无特殊情况，例会时候需要展示之前工作的总结；
+12. 自觉设置进度条，每次讨论完都约下次的讨论时间和讨论内容；
 
 #### 硕士
 
@@ -57,8 +58,6 @@ The path to an EM expert
 3. Sophocles J. Orfanidis的Electromagnetic Waves and Antennas过一遍；
 4. 天线领域重要研究组的有影响力的过往文章；
 5. 负责维护组里的文献库（都是哪些牛组在做什么方向）；
-<<<<<<< HEAD
-6. 负责维护组里共用的Python库；
-=======
 6. 负责维护组里共用的Python库；
 7. 经常问自己：提交教职申请的时候，打算怎么用一句话总结自己的研究特色（研究方向）？
+
