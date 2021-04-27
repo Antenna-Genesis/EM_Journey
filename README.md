@@ -23,10 +23,10 @@ The path to an EM expert
 
 1. Kraus的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/251/）；
 2. Pozar的微波工程过一遍（配套练习https://tbc-python.fossee.in/book-details/814/）；
-3. Stanford的Writting in Science过一遍；
-4. MIT Walter Lewin的电磁学视频过一遍；
-5. 费曼物理学讲义的电磁部分过一遍；
-6. 完成Learn Python the Hard Way的学习；
+3. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j?share_source=copy_web）；
+4. MIT Walter Lewin的电磁学视频过一遍（https://www.bilibili.com/video/BV124411R7r2?share_source=copy_web）；
+5. 费曼物理学讲义的电磁部分过一遍（https://www.feynmanlectures.caltech.edu/）；
+6. 完成Learn Python the Hard Way的学习（https://github.com/ubarredo/LearnPythonTheHardWay）；
 7. 使用并帮助维护组里共用的Python库来做仿真工作和数据处理；
 8. 阅读天线领域大牛们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）；
 9. 每周一次文献学习会，每人分享对一篇文章的理解；
@@ -39,7 +39,7 @@ The path to an EM expert
 
 1. 梁昌洪的简明微波过一遍；
 2. Balanis的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/876/）；
-3. Gilbert Strang的Introduction to Linear Algebra视频过一遍；
+3. Gilbert Strang的Introduction to Linear Algebra视频过一遍（https://www.bilibili.com/video/BV1zT4y1u7c7?share_source=copy_web）；
 4. Chu极限推导《PHYSICAL LIMITATIONS OF OMNIDIRECTIONAL ANTENNAS》；
 5. 选一种算法，分别实现dipole，patch，slot天线的电磁计算
 6. 每一期新出的TAP和AWPL都必须要快速浏览一遍，且形成简要文档记录；
