@@ -24,12 +24,12 @@ The path to an EM expert
 
 在所有人要求的基础上
 
-1. Kraus的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/251/）；
-2. Pozar的微波工程过一遍（配套练习https://tbc-python.fossee.in/book-details/814/）；
-3. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j?share_source=copy_web）；
-4. MIT Walter Lewin的电磁学视频过一遍（https://www.bilibili.com/video/BV124411R7r2?share_source=copy_web）；
-5. 费曼物理学讲义的电磁部分过一遍（https://www.feynmanlectures.caltech.edu/）；
-6. 完成Learn Python the Hard Way的学习（https://github.com/ubarredo/LearnPythonTheHardWay）；
+1. 完成Learn Python the Hard Way的学习（https://github.com/ubarredo/LearnPythonTheHardWay）；
+2. Kraus的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/251/）；
+3. Pozar的微波工程过一遍（配套练习https://tbc-python.fossee.in/book-details/814/）；
+4. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j?share_source=copy_web）；
+5. MIT Walter Lewin的电磁学视频过一遍（https://www.bilibili.com/video/BV124411R7r2?share_source=copy_web）；
+6. 费曼物理学讲义的电磁部分过一遍（https://www.feynmanlectures.caltech.edu/）；
 7. 使用并帮助维护组里共用的Python库来做仿真工作和数据处理；
 8. 阅读天线领域大牛们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）；
 9. 阅读近30年来IEEE APS的获奖文章（https://ieeeaps.org/about-the-transactions/best-paper-awards）；
