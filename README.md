@@ -58,7 +58,7 @@ The path to an EM expert
 
 1. Gilbert Strang的Introduction to Linear Algebra书籍过一遍；
 2. Harrington的时谐电磁场过一遍；
-3. Sophocles J. Orfanidis的Electromagnetic Waves and Antennas过一遍；
+3. 陈志豪的应用电磁学讲义过一遍；
 4. 天线领域重要研究组的有影响力的过往文章；
 5. 负责维护组里的文献库（都是哪些牛组在做什么方向）；
 6. 负责维护组里共用的Python库；
