@@ -6,20 +6,20 @@
 
       特征阻抗：首先需要保证同轴线的特征阻抗等于50欧姆。假设同轴线的参数如下图所示，
 
-      ![查看源图像](https://th.bing.com/th/id/Rf659c9c57152dab70b109fc902ab5a78?rik=p8CoPgvO5w7jlw&riu=http%3a%2f%2fwww.rfcables.org%2fimages%2fcoaxial-crosssectional-view.jpg&ehk=9HZn8xOq7cyxKMzAMf4BdIihfRpbE82fh8uYXoj%2fAmk%3d&risl=&pid=ImgRaw)
+      ![img](https://www.pasternack.com/Images/reference-tools/images/coax2_pic.png)
 
       则其特征阻抗公式为（*以后记得添加参考文献*）
       $$
-      Z_{0}=\frac{138 \log _{10}\left(\frac{D}{d}\right)}{\sqrt{\varepsilon_{r}}}
+      Z_{0}=\frac{138 \log _{10}\left(\frac{D_{o}}{D_{i}}\right)}{\sqrt{\varepsilon_{r}}}
       $$
       对应的计算代码如下
 
       ```python
       import numpy as np
-      D = 2.1 * 2
-      d = 0.6 * 2
+      Do = 2.1 * 2
+      Di = 0.6 * 2
       DK = 2.2
-      z = 138 * np.log10(D / d) / np.sqrt(DK)
+      z = 138 * np.log10(Do / Di) / np.sqrt(DK)
       print(z)
       ```
 
