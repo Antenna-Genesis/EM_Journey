@@ -75,7 +75,7 @@
    1. 内容
 
 3. ## 宽带E形贴片天线
-## 方法一，使用内置Toolkit建模
+### 方法一，使用内置Toolkit建模
 
 选择Rectangular-Probe Fed
 
@@ -105,13 +105,13 @@
 
 ![image-20210607090745620](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607090745620.png)
 
-## 方法二，自己建模	
+### 方法二，自己建模	
 
-### 新建设计工程
+#### 新建设计工程
 
 【HFSS】-【Solution Type】选择Modal。【Modeler】-【Units】选择mm。
 
-### 添加和定义设计变量
+#### 添加和定义设计变量
 
 【HFSS】-【Design Properties】，按照paper内容，添加如下变量
 
@@ -119,13 +119,13 @@
 
 其中未提及的subX、subY为基片尺寸，gndX、gndY为地平面尺寸，lambda为2.4GHz对应波长，r0为同轴线内导体半径。注意除lambda和length外，单位均为mm！！
 
-### 设计建模
+#### 设计建模
 
-#### 创建介质基片
+##### 创建介质基片
 
 为使得坐标轴零位位于模型中心，故介质基片的顶点位置坐标为(-subX/2, -subY/2, 0)，XSize、YSize、ZSize分别为subX、subY、h。材质为air。适当调整颜色和透明度。命名为Sub_Air。
 
-#### 创建辐射贴片
+##### 创建辐射贴片
 
 首先创建一个矩形作为贴片，命名为Patch，顶点坐标为(-L/2, -W/2, h)，XY尺寸分别为L、W。
 
@@ -135,15 +135,15 @@
 
 ![image-20210607151257587](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607151257587.png)
 
-#### 创建参考地
+##### 创建参考地
 
 操作同创建贴片，不过参考地应附在基片下表面。
 
-#### 创建同轴馈线内芯
+##### 创建同轴馈线内芯
 
 创建一个圆柱体，命名为Feed，底部圆心坐标为(0mm ,W/2-Yf ,0mm)，半径为r0（可根据实际采用的线材进行调整，此处本人选取了一个一般值），高度为h，材质设为pec（理想电导体），也可设置为copper（铜）。
 
-#### 创建信号传输端口面
+##### 创建信号传输端口面
 
 同轴馈线需要穿过参考地面来传输能量，因此需要在参考地面GND上开一个圆孔。在GND面上创建一个圆形，命名为Port，圆心坐标为(0mm ,W/2-Yf ,0mm)，半径为r0*0.23（同轴线外导体半径的基本公式，随后我找找出处..）。
 
@@ -151,13 +151,13 @@
 
 ![image-20210607152310942](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607152310942.png)
 
-### 设置边界条件
+#### 设置边界条件
 
-#### 设置理想导体边界
+##### 设置理想导体边界
 
 将Patch和GND设为理想导体边界，【Assign Boundary】-【Pefect E】。
 
-#### 设置辐射边界条件
+##### 设置辐射边界条件
 
 如果仅设置单层空气盒子，有一个快速方法，单击功能栏中的create region，勾选Pad all directions aimilarly，Padding type选择Absolute Offset，值设置为lambda/4（四分之一波长），即可根据模型的外形，自动一个各处均距离模型lambda/4的区域，选中设为辐射边界条件，【Assign Boundary】-【Radiation】。
 
@@ -165,17 +165,17 @@
 
 <img src="C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607155911546.png" alt="image-20210607155911546" style="zoom:67%;" />
 
-#### 设置端口激励
+##### 设置端口激励
 
 将端口平面Port设置集成端口激励，【Assign Excitation】-【Lumped Port】，端口阻抗设置为50ohm，在Modes对话框中选择New Line，设置积分线从同轴线内半径指向外半径（外指向内也可），鼠标显示一个小扇形即表示当前已选取到圆形的半径，选取积分线的起点和终点时均需要显示小扇形。
 
 <img src="C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607155631593.png" alt="image-20210607155631593" style="zoom:67%;" />
 
-#### 求解设置
+##### 求解设置
 
 Setup1求解频率设置为2.4GHz，同时添加1.5GHz-3GHz快速扫频，具体的迭代次数、误差、步长等参数按需设置。Setup2求解频率设置为1.9GHz，同时添加1.5GHz-3GHz快速扫频。（想了想又感觉Setup2这一步也没有必要，因为原先的谐振点就在2.4GHz，1.9GHz是E形缝隙引入的）
 
-#### 设计检查、仿真与查看仿真结果
+##### 设计检查、仿真与查看仿真结果
 
 检查设计是否正确，分别以Setup1和Setup2运行仿真计算。
 
