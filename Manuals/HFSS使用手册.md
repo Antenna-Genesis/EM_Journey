@@ -205,7 +205,7 @@ Results中，【Create Far Fields Report】-【Radiation Pattern】，添加Gain
 
 
 
-4.### 确定E面和H面的一个方法
+4. ### 确定E面和H面的一个方法
 
 #### 首先确定天线的最大辐射方向
 
