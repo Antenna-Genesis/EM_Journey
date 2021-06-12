@@ -44,6 +44,8 @@
          figure test
 
          ![image-20210612220633218](/Users/kai/Library/Application Support/typora-user-images/image-20210612220633218.png)
+         ![image](https://user-images.githubusercontent.com/8062972/121778693-9941f100-cbca-11eb-931b-88fa85231eb6.png)
+
 
          
 
