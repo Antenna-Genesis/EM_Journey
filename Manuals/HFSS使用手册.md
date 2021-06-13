@@ -47,25 +47,26 @@
          ![image](https://user-images.githubusercontent.com/8062972/121778693-9941f100-cbca-11eb-931b-88fa85231eb6.png)
 
 
-         
+​         
 
          建好同轴结构之后，接下来需要给同轴馈电。有两种馈电方法，第一种是采用lumped port（**请迪凡补充一下**）
-
+    
          **第一步：如上图所示，用GND减去外导体，保证选中GND时外导体对应的圆被减去**
          ![图片](https://user-images.githubusercontent.com/58317898/120826788-6164f900-c58d-11eb-82a5-5ed0c9f4f16f.png)
          **第二步：如上图所示，用外导体圆柱减去内导体圆柱，保证选中外导体时中心部分内导体被减去**
-
+    
       3. 双层空气盒子。尽量设置两层空气盒子，其中，外层盒子与天线的距离要约等于1/4中心频率波长，用于吸收电磁波（设置为辐射边界），从而模拟天线放在自由空间的情况；内层尽量接近天线，用作求解方向图时候的近场-远场变换。内边界的表面设置为一个facelist，之后计算远场的时候，选这个facelist作为近场源。
-
+    
       4. 需要生成多个相同结构时候，善用HFSS内置的“duplicate”功能。比如，对于旋转对称的情况（圆周上快速建立均匀分布的几何体），先创建一个几何体，设置好其参数，再点击“duplicate around axis”，选择角度即可复制。
-
+    
          *轴对称结构*
-
+    
       5. 参数化。尽量把所有结构尺寸甚至介电常数都参数化，便于后期做调整、扫描和优化。参数命名方式，参考程序员给代码中的参数命名，建议用下划线法命名，每个变量名中，不超过两个下划线。
 
-         
 
-         
+​         
+
+​         
 
 1. ## 全向辐射微带天线仿真例子（**请迪凡补充一下，需要配图**）
 
@@ -93,23 +94,23 @@
 
 馈电点位置X=0，Y=1.9
 
-![image-20210607085908609](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607085908609.png)
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607085908609.png?lastModify=1623567059" alt="image-20210607085908609" style="zoom:50%;" />
 
 生成后在XY平面插入一个矩形
 
-![image-20210607090020259](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607090020259.png)
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607090020259.png?lastModify=1623567070" alt="image-20210607090020259" style="zoom:50%;" />
 
 并沿y轴做镜像对称，将两个slot做Unite运算，向量设置如下
 
-![image-20210607090333899](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607090333899.png)
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607090333899.png?lastModify=1623567089" alt="image-20210607090333899" style="zoom:50%;" />
 
 随后和贴片做Subtract运算
 
-![image-20210607090507871](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607090507871.png)
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607090507871.png?lastModify=1623567095" alt="image-20210607090507871" style="zoom: 67%;" />
 
 但调谐结果并不理想，遂自己重新建模。
 
-![image-20210607090745620](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607090745620.png)
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607090745620.png?lastModify=1623567109" alt="image-20210607090745620" style="zoom: 80%;" />
 
 ### 方法二，自己建模	
 
@@ -121,7 +122,7 @@
 
 【HFSS】-【Design Properties】，按照paper内容，添加如下变量
 
-![image-20210607150158758](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607150158758.png)
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607150158758.png?lastModify=1623567123" alt="image-20210607150158758" style="zoom:50%;" />
 
 其中未提及的subX、subY为基片尺寸，gndX、gndY为地平面尺寸，lambda为2.4GHz对应波长，r0为同轴线内导体半径。注意除lambda和length外，单位均为mm！！
 
@@ -139,7 +140,7 @@
 
 选中Patch和slot做Subtract运算，Blank Parts为Patch，Tool Parts为slot，即可得到E形缝隙贴片。
 
-![image-20210607151257587](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607151257587.png)
+![image-20210607151257587](file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607151257587.png?lastModify=1623567135)
 
 ##### 创建参考地
 
@@ -155,7 +156,7 @@
 
 选中Port和GND进行Subtract操作，Blank为GND，tool为Port，注意勾选Clone tool objects before operation复选框，即GND挖去Port对应的区域，但Port仍保留在原处。由此便创建好模型。
 
-![image-20210607152310942](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607152310942.png)
+![image-20210607152310942](file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607152310942.png?lastModify=1623567145)
 
 #### 设置边界条件
 
@@ -167,15 +168,15 @@
 
 如果仅设置单层空气盒子，有一个快速方法，单击功能栏中的create region，勾选Pad all directions aimilarly，Padding type选择Absolute Offset，值设置为lambda/4（四分之一波长），即可根据模型的外形，自动一个各处均距离模型lambda/4的区域，选中设为辐射边界条件，【Assign Boundary】-【Radiation】。
 
-<img src="C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607155801187.png" alt="image-20210607155801187" style="zoom:67%;" />
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607155801187.png?lastModify=1623567152" alt="image-20210607155801187" style="zoom:50%;" />
 
-<img src="C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607155911546.png" alt="image-20210607155911546" style="zoom:67%;" />
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607155911546.png?lastModify=1623567164" alt="image-20210607155911546" style="zoom:50%;" />
 
 ##### 设置端口激励
 
 将端口平面Port设置集成端口激励，【Assign Excitation】-【Lumped Port】，端口阻抗设置为50ohm，在Modes对话框中选择New Line，设置积分线从同轴线内半径指向外半径（外指向内也可），鼠标显示一个小扇形即表示当前已选取到圆形的半径，选取积分线的起点和终点时均需要显示小扇形。
 
-<img src="C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607155631593.png" alt="image-20210607155631593" style="zoom:67%;" />
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607155631593.png?lastModify=1623567183" alt="image-20210607155631593" style="zoom:50%;" />
 
 ##### 求解设置
 
@@ -187,11 +188,11 @@ Setup1求解频率设置为2.4GHz，同时添加1.5GHz-3GHz快速扫频，具体
 
 查看天线的谐振频率，即查看回波损耗（S11）的扫频分析结果，Results中选择【Create Modal Solution Data Report】-【Rectangular Plot】，添加S Parameter，S（1，1），dB。注意，Context栏中选择Setup2：Sweep才能显示Setup2设置下的扫频结果。
 
-![image-20210607161651554](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607161651554.png)
+![image-20210607161651554](file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607161651554.png?lastModify=1623567191)
 
 该仿真结果和文献的实测结果比较接近（略有频偏，但是偏移不多），但是和文献的计算结果相比，文献中衰减更深的谐振点在2.4GHz附近，而该仿真衰减更深的谐振点在1.9GHz附近，留给同学们思考一下（我也得思考思考..）
 
-![image-20210607162956256](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607162956256.png)
+![image-20210607162956256](file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607162956256.png?lastModify=1623567202)
 
 查看方向图。以下给出2.4GHz时的结果。
 
@@ -199,48 +200,15 @@ Radition中，E Plane：设置Phi从90到90，步长0；设置Theta从-180到180
 
 Results中，【Create Far Fields Report】-【Radiation Pattern】，添加Gain、GainPhi; GainTheta、dB。Geometry分别选择E Plane和H Plane。
 
-<img src="C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607164418032.png" alt="image-20210607164418032" style="zoom: 33%;" />
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607164418032.png?lastModify=1623567208" alt="image-20210607164418032" style="zoom:50%;" />
 
-<img src="C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607164436030.png" alt="image-20210607164436030" style="zoom:50%;" />
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607164436030.png?lastModify=1623567218" alt="image-20210607164436030" style="zoom:50%;" />
 
 如果要添加直角坐标系方向图，则【Create Far Fields Report】-【Rectangular Plot】。和文献中的实测结果较为接近。
 
-<img src="C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607170203932.png" alt="image-20210607170203932" style="zoom: 33%;" />
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607170203932.png?lastModify=1623567226" alt="image-20210607170203932" style="zoom: 33%;" />
 
-<img src="C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607170221981.png" alt="image-20210607170221981" style="zoom:33%;" />
-
-
-
-4. ## 确定E面和H面的一个方法
-
-### 首先确定天线的最大辐射方向
-
-在仿真结束后，画出天线的3D增益方向图，首先添加了一个完整的辐射球面，选择工程树下的【Radiation】-【Insert Far Field Setup】Infinite Sphere ，Phi从0～ 360，Theta从0～180，命名为3D Sphere。
-然后，【Results】-【Create Far Fields Reports】-【3D Polar Plot】，确认geometry选择的是3D Shpere，Category选择Gain，Quantity选择GainTotal，Funtion选择db。
-
-最后，根据3D增益方向图确定最大辐射方向（数值最高点与原点的连线方向），本例中最大辐射方向指向z轴正方向。
-
-![image-20210607174927581](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607174927581.png)
-
-### 确定电场和磁场方向
-
-选中模型的天线部分后，右键【Plot Fields】-【E】-【Vector_E】，即可看到电场的方向；同样【Plot Fields】-【H】-【Vector_H】查看磁场方向。本例中的电场方向如下，可见电场合成后指向y轴负半轴。
-
-<img src="C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607174419259.png" alt="image-20210607174419259" style="zoom:67%;" />
-
-![image-20210607175425149](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607175425149.png)
-
-磁场方向如下。合成磁场指向x轴负半轴。
-
-![image-20210607175125349](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607175125349.png)
-
-![image-20210607175118600](C:\Users\方方方\AppData\Roaming\Typora\typora-user-images\image-20210607175118600.png)
-
-### 确定E面和H面
-
-过最大辐射方向和电场方向的平面即是E面，本例中最大辐射方向在z轴，电场方向在y轴，因此E面为yOz面。过最大辐射方向且与E面垂直的面即是H面，本例中磁场方向在x轴，因此H面为xOz面。
-
-再根据球坐标系确定Phi和Theta当中哪一个取定值，哪一个取所有可能值。取值完毕后，即可绘制相应的平面方向图。
+<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607170221981.png?lastModify=1623567239" alt="image-20210607170221981" style="zoom:33%;" />
 
 ## 
 
