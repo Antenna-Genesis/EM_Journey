@@ -82,6 +82,7 @@
    1. 内容
 
 3. ## 宽带E形贴片天线
+
 ### 方法一，使用内置Toolkit建模
 
 选择Rectangular-Probe Fed
@@ -94,121 +95,7 @@
 
 馈电点位置X=0，Y=1.9
 
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607085908609.png?lastModify=1623567059" alt="image-20210607085908609" style="zoom:50%;" />
-
-生成后在XY平面插入一个矩形
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607090020259.png?lastModify=1623567070" alt="image-20210607090020259" style="zoom:50%;" />
-
-并沿y轴做镜像对称，将两个slot做Unite运算，向量设置如下
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607090333899.png?lastModify=1623567089" alt="image-20210607090333899" style="zoom:50%;" />
-
-随后和贴片做Subtract运算
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607090507871.png?lastModify=1623567095" alt="image-20210607090507871" style="zoom: 67%;" />
-
-但调谐结果并不理想，遂自己重新建模。
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607090745620.png?lastModify=1623567109" alt="image-20210607090745620" style="zoom: 80%;" />
-
-### 方法二，自己建模	
-
-#### 新建设计工程
-
-【HFSS】-【Solution Type】选择Modal。【Modeler】-【Units】选择mm。
-
-#### 添加和定义设计变量
-
-【HFSS】-【Design Properties】，按照paper内容，添加如下变量
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607150158758.png?lastModify=1623567123" alt="image-20210607150158758" style="zoom:50%;" />
-
-其中未提及的subX、subY为基片尺寸，gndX、gndY为地平面尺寸，lambda为2.4GHz对应波长，r0为同轴线内导体半径。注意除lambda和length外，单位均为mm！！
-
-#### 设计建模
-
-##### 创建介质基片
-
-为使得坐标轴零位位于模型中心，故介质基片的顶点位置坐标为(-subX/2, -subY/2, 0)，XSize、YSize、ZSize分别为subX、subY、h。材质为air。适当调整颜色和透明度。命名为Sub_Air。
-
-##### 创建辐射贴片
-
-首先创建一个矩形作为贴片，命名为Patch，顶点坐标为(-L/2, -W/2, h)，XY尺寸分别为L、W。
-
-随后创建另一个矩形作为缝隙，命名为slot，顶点坐标(Ps-Ws/2 ,W/2-Ls ,h)，XY尺寸为Ws、Ls，沿y轴做Vector=(-2*Ps ,0mm ,0mm)，Total Number=2的Mirror操作，并选中这两个缝隙做Unit运算。
-
-选中Patch和slot做Subtract运算，Blank Parts为Patch，Tool Parts为slot，即可得到E形缝隙贴片。
-
-![image-20210607151257587](file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607151257587.png?lastModify=1623567135)
-
-##### 创建参考地
-
-操作同创建贴片，不过参考地应附在基片下表面。
-
-##### 创建同轴馈线内芯
-
-创建一个圆柱体，命名为Feed，底部圆心坐标为(0mm ,W/2-Yf ,0mm)，半径为r0（可根据实际采用的线材进行调整，此处本人选取了一个一般值），高度为h，材质设为pec（理想电导体），也可设置为copper（铜）。
-
-##### 创建信号传输端口面
-
-同轴馈线需要穿过参考地面来传输能量，因此需要在参考地面GND上开一个圆孔。在GND面上创建一个圆形，命名为Port，圆心坐标为(0mm ,W/2-Yf ,0mm)，半径为r0*0.23（同轴线外导体半径的基本公式，随后我找找出处..）。
-
-选中Port和GND进行Subtract操作，Blank为GND，tool为Port，注意勾选Clone tool objects before operation复选框，即GND挖去Port对应的区域，但Port仍保留在原处。由此便创建好模型。
-
-![image-20210607152310942](file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607152310942.png?lastModify=1623567145)
-
-#### 设置边界条件
-
-##### 设置理想导体边界
-
-将Patch和GND设为理想导体边界，【Assign Boundary】-【Pefect E】。
-
-##### 设置辐射边界条件
-
-如果仅设置单层空气盒子，有一个快速方法，单击功能栏中的create region，勾选Pad all directions aimilarly，Padding type选择Absolute Offset，值设置为lambda/4（四分之一波长），即可根据模型的外形，自动一个各处均距离模型lambda/4的区域，选中设为辐射边界条件，【Assign Boundary】-【Radiation】。
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607155801187.png?lastModify=1623567152" alt="image-20210607155801187" style="zoom:50%;" />
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607155911546.png?lastModify=1623567164" alt="image-20210607155911546" style="zoom:50%;" />
-
-##### 设置端口激励
-
-将端口平面Port设置集成端口激励，【Assign Excitation】-【Lumped Port】，端口阻抗设置为50ohm，在Modes对话框中选择New Line，设置积分线从同轴线内半径指向外半径（外指向内也可），鼠标显示一个小扇形即表示当前已选取到圆形的半径，选取积分线的起点和终点时均需要显示小扇形。
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607155631593.png?lastModify=1623567183" alt="image-20210607155631593" style="zoom:50%;" />
-
-##### 求解设置
-
-Setup1求解频率设置为2.4GHz，同时添加1.5GHz-3GHz快速扫频，具体的迭代次数、误差、步长等参数按需设置。Setup2求解频率设置为1.9GHz，同时添加1.5GHz-3GHz快速扫频。（想了想又感觉Setup2这一步也没有必要，因为原先的谐振点就在2.4GHz，1.9GHz是E形缝隙引入的）
-
-##### 设计检查、仿真与查看仿真结果
-
-检查设计是否正确，分别以Setup1和Setup2运行仿真计算。
-
-查看天线的谐振频率，即查看回波损耗（S11）的扫频分析结果，Results中选择【Create Modal Solution Data Report】-【Rectangular Plot】，添加S Parameter，S（1，1），dB。注意，Context栏中选择Setup2：Sweep才能显示Setup2设置下的扫频结果。
-
-![image-20210607161651554](file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607161651554.png?lastModify=1623567191)
-
-该仿真结果和文献的实测结果比较接近（略有频偏，但是偏移不多），但是和文献的计算结果相比，文献中衰减更深的谐振点在2.4GHz附近，而该仿真衰减更深的谐振点在1.9GHz附近，留给同学们思考一下（我也得思考思考..）
-
-![image-20210607162956256](file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607162956256.png?lastModify=1623567202)
-
-查看方向图。以下给出2.4GHz时的结果。
-
-Radition中，E Plane：设置Phi从90到90，步长0；设置Theta从-180到180，步长1。H Plane：设置Phi从0到0，步长0；设置Theta从-180到180，步长1。（E面为yOz平面，当中主极化为Theta，交叉极化为Phi；H面为xOz平面，当中主极化为Phi，交叉极化为Theta；其实我还没有很懂怎么确定E面和H面、主极化和交叉极化，希望有同学能够讲明白...Plz。后面给出一个摸索到的方法！）
-
-Results中，【Create Far Fields Report】-【Radiation Pattern】，添加Gain、GainPhi; GainTheta、dB。Geometry分别选择E Plane和H Plane。
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607164418032.png?lastModify=1623567208" alt="image-20210607164418032" style="zoom:50%;" />
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607164436030.png?lastModify=1623567218" alt="image-20210607164436030" style="zoom:50%;" />
-
-如果要添加直角坐标系方向图，则【Create Far Fields Report】-【Rectangular Plot】。和文献中的实测结果较为接近。
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607170203932.png?lastModify=1623567226" alt="image-20210607170203932" style="zoom: 33%;" />
-
-<img src="file://C:\Users\%E6%96%B9%E6%96%B9%E6%96%B9\AppData\Roaming\Typora\typora-user-images\image-20210607170221981.png?lastModify=1623567239" alt="image-20210607170221981" style="zoom:33%;" />
+![image-20210607085908609](HFSS使用手册.assets/image-20210607085908609.png)
 
 ## 
 
