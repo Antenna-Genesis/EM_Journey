@@ -74,6 +74,7 @@
 
 ![discrete](https://images.gitee.com/uploads/images/2021/0614/181329_0e733008_9257194.png "屏幕截图.png")
 ​         
+     8.当出现Simulation completed with execution error on server: Local Machine 错误导致仿真失败时，应检查文件名是否包含中文
 
 ​         
 
