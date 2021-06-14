@@ -62,9 +62,16 @@
          *轴对称结构*
     
       5. 参数化。尽量把所有结构尺寸甚至介电常数都参数化，便于后期做调整、扫描和优化。参数命名方式，参考程序员给代码中的参数命名，建议用下划线法命名，每个变量名中，不超过两个下划线。
+
+
+
       6.参数扫描之后绘制plot的过程中，选中optimetrics->parametricssetup1->options->save field and mesh才可以保存之前扫描的结果，把图线画在一起
 ![ ](https://images.gitee.com/uploads/images/2021/0614/181414_2bf21864_9257194.png "屏幕截图.png")
+
+
       7.HFSS是频域求解器，不擅长做宽带计算，进行宽带仿真时使扫频频带尽可能窄，尽量使用离散模式更加准确
+
+
 ![discrete](https://images.gitee.com/uploads/images/2021/0614/181329_0e733008_9257194.png "屏幕截图.png")
 ​         
 
