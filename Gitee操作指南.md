@@ -34,7 +34,7 @@ ssh -T git@gitee.com
 ssh -T git@gitee.com
 Hi Kai! You've successfully authenticated, but GITEE.COM does not provide shell access.
 
-### 完成本地编辑后，需要先git暂存，然后commit，之后push
+### 同步本地文件到云端：完成本地编辑后，需要先add，然后commit，之后push
 
 git add .
 
@@ -42,15 +42,26 @@ git commit -m "test commit"
 
 git push gitee main
 
-git的操作可以参考
+类似下面这样
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0614/161207_1ab2918f_9256245.png "屏幕截图.png")
+
+### 同步云端文件到本地：fetch或者pull
+fetch常结合merge一起用，git fetch + git merge == git pull
+一般要用git fetch+git merge，因为git pull会将代码直接合并，造成冲突等无法知道，fetch代码下来要git diff orgin/xx来看一下差异然后再合并。
+
+作者：忆飞
+链接：https://www.jianshu.com/p/a5c4d2f99807
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+### git的操作可以参考
 
 https://blog.csdn.net/WEB_CSDN_SHARE/article/details/79243308?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control
 
-git概念图解
+### git概念图解
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0614/160923_57905309_9256245.png "屏幕截图.png")
 https://www.cnblogs.com/runnerjack/p/9342362.html
 
-进入git log模式不要慌，按照这个来处理
+### 进入git log模式不要慌，按照这个来处理
 
 https://blog.csdn.net/weixin_41287260/article/details/89813851
 
