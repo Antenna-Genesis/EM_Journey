@@ -46,6 +46,10 @@ git的操作可以参考
 
 https://blog.csdn.net/WEB_CSDN_SHARE/article/details/79243308?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control
 
+git概念图解
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0614/160923_57905309_9256245.png "屏幕截图.png")
+https://www.cnblogs.com/runnerjack/p/9342362.html
+
 进入git log模式不要慌，按照这个来处理
 
 https://blog.csdn.net/weixin_41287260/article/details/89813851
