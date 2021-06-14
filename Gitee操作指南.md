@@ -32,7 +32,7 @@ ssh -T git@gitee.com
 ### 确认成功之后，再次进行ssh校验，就可以看到自己的用户名了。
 
 ssh -T git@gitee.com
-Hi Kai! You've successfully authenticated, but GITEE.COM does not provide shell access.
+Hi **! You've successfully authenticated, but GITEE.COM does not provide shell access.
 
 ### 同步本地文件到云端：完成本地编辑后，需要先add，然后commit，之后push
 
