@@ -252,7 +252,7 @@ Results中，【Create Far Fields Report】-【Radiation Pattern】，添加Gain
 再根据球坐标系确定Phi和Theta当中哪一个取定值，哪一个取所有可能值。取值完毕后，即可绘制相应的平面方向图。
 
 ### 4.L探针馈电贴片天线仿真
-
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0614/184230_4fcacdaf_9257194.png "屏幕截图.png")
 
     
 原理：L型探针垂直部分与贴片产生感抗，平行部分与贴片产生容抗，二者相互作用产生谐振，增加谐振点展宽频带
