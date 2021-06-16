@@ -277,9 +277,11 @@ lh(探针垂直部分)    r=0.5  h=6.68     x,y,x:0,0,0
 ### 
 ### 
 4. 选择Wave Port激励
-通常用于侧面馈电的结构中，wave port加在一个与微带线垂直的平面上，该平面应为内层空气盒子边界的一部分
-![图1](https://images.gitee.com/uploads/images/2021/0615/125455_9a9b6f35_9258071.png "屏幕截图.png")
-如图所示，红色平面为wave port端口，其下边与介质板底面在同一高度上，宽度为8倍的微带线宽度，高度为8倍的微带线高度。
+通常用于侧面馈电的结构中，wave port加在一个与微带线垂直的平面上，因为waveport背面需要有理想导体块来指定能量传输方向，
+![图1](https://images.gitee.com/uploads/images/2021/0616/231658_6fdea0af_9258071.png "屏幕截图.png")
+如图所示，红色立方体为wave port端口。
+具体方法：可以先构建一矩形盒子，其下表面与介质板底面在同一高度上，宽度为8倍的微带线宽度，高度为8倍的微带线高度，厚度可任意指定一个较短长度（如1mm）。
+将盒子指定为pec材料，然后按f（用于选择面的模式），选中能量传播方向对应的面（此处是与微带线连接的面），add wave port。
 添加wave port激励时可先全部选择默认值再在目录的excitations处调整，我做仿真时general部分保持默认值，而post processing部分做如下修改：
 ![图2](https://images.gitee.com/uploads/images/2021/0615/125818_947e5ac5_9258071.png "屏幕截图.png")
 port renormalization一般选择50Ω，deembed settings用于调节测量Z11的位置，如图2中选择20mm则对应图1中选择距离波端口20mm处作为Z11的测量点。
