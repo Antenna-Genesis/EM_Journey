@@ -60,7 +60,7 @@ The path to an EM expert
 2. Harrington的时谐电磁场过一遍；
 3. 陈志豪的应用电磁学讲义过一遍；
 4. 看懂Chu极限推导《PHYSICAL LIMITATIONS OF OMNIDIRECTIONAL ANTENNAS》；
-5. 天线领域重要研究组的有影响力的过往文章；
+5. 阅读天线领域重要研究组的有影响力的过往文章；
 6. 负责维护组里的文献库（都是哪些牛组在做什么方向）；
 7. 负责维护组里共用的Python库；
 8. 经常问自己：提交教职申请的时候，打算怎么用一句话总结自己的研究特色（研究方向）？
