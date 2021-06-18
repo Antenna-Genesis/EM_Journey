@@ -18,7 +18,8 @@
 
    `git push gitee-ssh main`
 
-   类似下面这样
+   类似下面这样:
+
    ![image-20210618125207075](Gitee%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97.assets/image-20210618125207075.png)
 
    
@@ -89,7 +90,7 @@
 
       
 
-      #### 	为生成ssh公钥方法，输入下面的字符串，并一直按确认键，直到完成。
+      #### 	为生成ssh公钥，输入下面的字符串，并一直按确认键，直到完成。
 
       ​		ssh-keygen -t rsa -C username@xyz.com
 
@@ -102,15 +103,15 @@
 
       ​		cat .ssh/id_rsa.pub
 
-      
-
-      ### Github的默认主干分支叫main，Gitee的叫master，需要注意差异，最好保持一致。否则，可能会见到这样的错误：
+   3. ### Github的默认主干分支叫main，Gitee的叫master，需要注意差异，最好保持一致。否则，可能会见到这样的错误：
 
       ​	git push gitee master
       ​	error: src refspec master does not match any.
       ​	error: failed to push some refs to '
+   
+      
 
-      ### 
+      
 
       
 
