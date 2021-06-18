@@ -67,47 +67,52 @@
 
    
 
-3. ### 其他操作
+3. ### 更多信息
+   1. ### git的操作可以参考
 
-## 更多信息
+      https://blog.csdn.net/WEB_CSDN_SHARE/article/details/79243308?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control
 
-1. ### git的操作可以参考
+   2. ### 廖雪峰的介绍可以参考 
 
-   https://blog.csdn.net/WEB_CSDN_SHARE/article/details/79243308?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control
+      https://www.liaoxuefeng.com/wiki/896043488029600/1163625339727712
 
-2. ### 廖雪峰的介绍可以参考 
+      #### 另外，增加一点那个页面没有的信息。
 
-   https://www.liaoxuefeng.com/wiki/896043488029600/1163625339727712
+      #### 	廖雪峰教程中没有提到授权ssh的步骤，可能会导致无法同步。
 
-   ### 另外，增加一点那个页面没有的信息。
+      ​		ssh -T git@gitee.com
 
-   ### 为生成ssh公钥方法，输入下面的字符串，并一直按确认键，直到完成。
+      ### 		确认成功之后，再次进行ssh校验，就可以看到自己的用户名了。
 
-   ssh-keygen -t rsa -C username@xyz.com
+      ​		ssh -T git@gitee.com
+      ​		Hi **! You've successfully authenticated, but GITEE.COM does not provide shell access.
 
-   ### 记下密钥位置，比如：
+      
 
-   Your identification has been saved in /Users/.ssh/id_rsa.
-   Your public key has been saved in /Users/.ssh/id_rsa.pub.
+      #### 	为生成ssh公钥方法，输入下面的字符串，并一直按确认键，直到完成。
 
-   ### 进入密钥位置，打开公钥，可以拷贝出来：
+      ​		ssh-keygen -t rsa -C username@xyz.com
 
-   cat .ssh/id_rsa.pub
+      #### 	记下密钥位置，比如：
 
-   ### Github的默认主干分支叫main，Gitee的叫master，需要注意差异，最好保持一致。否则，可能会见到这样的错误：
+      ​		Your identification has been saved in /Users/.ssh/id_rsa.
+      ​		Your public key has been saved in /Users/.ssh/id_rsa.pub.
 
-   git push gitee master
-   error: src refspec master does not match any.
-   error: failed to push some refs to '
+      #### 	进入密钥位置，打开公钥，可以拷贝出来：
 
-   ### 廖雪峰教程中没有提到授权ssh的步骤，可能会导致无法同步。解决方法是输入下面的命令行，按指示操作（Are you sure you want to continue connecting (yes/no/[fingerprint])?这里先输入yes，再确认）。
+      ​		cat .ssh/id_rsa.pub
 
-   ssh -T git@gitee.com
+      
 
-   ### 确认成功之后，再次进行ssh校验，就可以看到自己的用户名了。
+      ### Github的默认主干分支叫main，Gitee的叫master，需要注意差异，最好保持一致。否则，可能会见到这样的错误：
 
-   ssh -T git@gitee.com
-   Hi **! You've successfully authenticated, but GITEE.COM does not provide shell access.
+      ​	git push gitee master
+      ​	error: src refspec master does not match any.
+      ​	error: failed to push some refs to '
+
+      ### 
+
+      
 
 
 
