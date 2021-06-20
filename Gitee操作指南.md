@@ -2,11 +2,45 @@
 
 ## 快速操作
 
-0. ### git操作的概念图
+0. ### git操作的概念图以及初始化
 
-   ![输入图片说明](Gitee%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97.assets/160923_57905309_9256245.png)
+    1. #### 概念图
 
-   https://www.cnblogs.com/runnerjack/p/9342362.html
+       ![image-20210620113440340](Gitee操作指南.assets/image-20210620113440340.png)
+
+       https://www.cnblogs.com/runnerjack/p/9342362.html
+
+    2. #### 初始化（假设首先从云端同步到本地）
+
+       1. ##### 创建gitee账户
+
+       2. ##### 打开命令行，进入想要存放代码库文件夹的本地磁盘位置
+
+          例如：cd /Users/some_folder
+
+       3. ##### 从云端克隆代码库文件夹到本地(仅限第一次操作)
+
+          例如：git clone git@gitee.com:kai-lu/SS-Scripts.git
+
+          克隆操作之后，云端和本地代码库自动关联了起来
+
+       4. ##### Pull也可以从云端同步代码本地的方式，但需要事先在本地创建用于存放代码库的文件夹
+
+          1. 在本地建好文件夹之后，在命令行中操作，进入该文件夹。
+
+             例如：cd new_folder
+
+          2. 初始化该文件夹：git init
+
+          3. 将本地和云端代码库关联
+
+             例如：git remote add ssgitee git@gitee.com:kai-lu/SS-Scripts.git
+
+             之后，可以通过git remote -v来检查
+
+          4. 如果错误的在本地做了初始化，或者想要取消本地的git关联，可以 rm -rf .git
+
+       5. ##### Ready，go！如其他需求，和组内其他人讨论或者自行搜索
 
 1. ### 从本地上传到gitee云端
 
@@ -17,6 +51,8 @@
    `git commit -m "test commit"`
 
    `git push gitee-ssh main`
+
+    其中，add . 和add --all等效
 
    类似下面这样:
 
@@ -108,7 +144,7 @@
       ​	git push gitee master
       ​	error: src refspec master does not match any.
       ​	error: failed to push some refs to '
-   
+
       
 
       
