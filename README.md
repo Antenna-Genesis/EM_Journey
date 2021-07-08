@@ -46,17 +46,19 @@ The path to an EM expert
 2. 梁昌洪的微波技术基础视频过一遍（https://www.bilibili.com/video/av90034984/）；
 3. Balanis的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/876/）；
 4. Gilbert Strang的Introduction to Linear Algebra视频过一遍（https://www.bilibili.com/video/BV1zT4y1u7c7?share_source=copy_web）；
-5. 选一种算法，分别实现dipole，patch，slot天线的电磁计算；
-6. 每一期新出的TAP和AWPL都必须要快速浏览一遍，且形成简要文档记录；
-7. 组会报告用英文写，可以汉语讲；
-8. 帮助维护组里的文献库（都是哪些牛组在做什么方向）；
-9. 帮助维护组里共用的Python库；
+5. 姜颖的数学物理方程视频过一遍（新出的，很适合跟学，https://space.bilibili.com/548272388?from=search&seid=8038279172488147472）；
+6. 旁听中大的数学物理方法课程；
+7. 选一种算法，分别实现dipole，patch，slot天线的电磁计算；
+8. 每一期新出的TAP和AWPL都必须要快速浏览一遍，且形成简要文档记录；
+9. 组会报告用英文写，可以汉语讲；
+10. 帮助维护组里的文献库（都是哪些牛组在做什么方向）；
+11. 帮助维护组里共用的Python库；
 
 #### 博士
 
 在硕士要求的基础上
 
-1. Gilbert Strang的Introduction to Linear Algebra书籍过一遍；
+1. 顾樵的数学物理方程过一遍；
 2. Harrington的时谐电磁场过一遍；
 3. 陈志豪的应用电磁学讲义过一遍；
 4. 看懂Chu极限推导《PHYSICAL LIMITATIONS OF OMNIDIRECTIONAL ANTENNAS》；
