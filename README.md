@@ -24,7 +24,7 @@ The path to an EM expert
 
 在所有人要求的基础上
 
-1. 完成Learn Python the Hard Way的学习（https://github.com/ubarredo/LearnPythonTheHardWay）；
+1. 完成《Learn Python the Hard Way》的学习（在线书https://github.com/ubarredo/LearnPythonTheHardWay）；
 2. Kraus的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/251/）；
 3. Pozar的微波工程过一遍（配套练习https://tbc-python.fossee.in/book-details/814/）；
 5. MIT Walter Lewin的电磁学视频过一遍（https://www.bilibili.com/video/BV124411R7r2?share_source=copy_web）；
@@ -49,7 +49,7 @@ The path to an EM expert
 5. 姜颖的数学物理方程视频过一遍（新出的，很适合跟学，https://space.bilibili.com/548272388?from=search&seid=8038279172488147472）；
 6. 旁听中大的数学物理方法课程；
 7. 选一种算法，分别实现dipole，patch，slot天线的电磁计算；
-8. 每一期新出的TAP和AWPL都必须要快速浏览一遍，且形成简要文档记录；
+8. 每一期新出的TAP和AWPL都必须要快速浏览一遍，且形成简要文档记录（比如新天线的结构图汇总）；
 9. 组会报告用英文写，可以汉语讲；
 10. 帮助维护组里的文献库（都是哪些牛组在做什么方向）；
 11. 帮助维护组里共用的Python库；
@@ -59,10 +59,11 @@ The path to an EM expert
 在硕士要求的基础上
 
 1. 顾樵的数学物理方程过一遍；
-2. Harrington的时谐电磁场过一遍；
-3. 陈志豪的应用电磁学讲义过一遍；
-4. 看懂Chu极限推导《PHYSICAL LIMITATIONS OF OMNIDIRECTIONAL ANTENNAS》；
-5. 阅读天线领域重要研究组的有影响力的过往文章；
-6. 负责维护组里的文献库（都是哪些牛组在做什么方向）；
-7. 负责维护组里共用的Python库；
-8. 经常问自己：提交教职申请的时候，打算怎么用一句话总结自己的研究特色（研究方向）？
+2. 旁听中大的高等工程数学（矩阵分析）；
+3. Harrington的时谐电磁场过一遍；
+4. 陈志豪的应用电磁学讲义过一遍；
+5. 看懂Chu极限推导《PHYSICAL LIMITATIONS OF OMNIDIRECTIONAL ANTENNAS》；
+6. 阅读天线领域重要研究组的有影响力的过往文章；
+7. 负责维护组里的文献库（都是哪些牛组在做什么方向）；
+8. 负责维护组里共用的Python库；
+9. 经常问自己：提交教职申请的时候，打算怎么用一句话总结自己的研究特色（研究方向）？
