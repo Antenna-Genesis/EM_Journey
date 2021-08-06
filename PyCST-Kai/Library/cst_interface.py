@@ -762,11 +762,11 @@ End If
 If DoesParameterExist ("Mesh_Max_Length") Then
         DeleteParameter ("Mesh_Max_Length")
 End If
-MakeSureParameterExists("Mesh_Num_Total", Mesh.GetNumberOfMeshCells）
+MakeSureParameterExists("Mesh_Num_Total", Mesh.GetNumberOfMeshCells)
+MakeSureParameterExists("Mesh_Min_Length", Mesh.GetMinimumEdgeLength)
+MakeSureParameterExists("Mesh_Max_Length", Mesh.GetMaximumEdgeLength)
 'StoreParameter("Mesh_Num_Total", Mesh.GetNumberOfMeshCells)
-MakeSureParameterExists("Mesh_Min_Length", Mesh.GetMinimumEdgeLength）
 'StoreParameter("Mesh_Min_Length", Mesh.GetMinimumEdgeLength)
-MakeSureParameterExists("Mesh_Max_Length", Mesh.GetMaximumEdgeLength）
 'StoreParameter("Mesh_Max_Length", Mesh.GetMaximumEdgeLength)
 'Returns the total number of mesh cells (may be either hexahedral elements or tetrahedrons).
 'Returns the minimum edge length of the currently chosen mesh.
