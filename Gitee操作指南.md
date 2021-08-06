@@ -113,7 +113,7 @@
 
       https://www.liaoxuefeng.com/wiki/896043488029600/1163625339727712
 
-      #### 另外，增加一点那个页面没有的信息。
+      #### 另外，增加一点那个页面没有的信息（https://gitee.com/help/articles/4181#article-header0）。
 
       #### 	廖雪峰教程中没有提到授权ssh的步骤，可能会导致无法同步。
 
