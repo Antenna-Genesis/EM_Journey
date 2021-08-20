@@ -16,7 +16,7 @@ time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
 print(f'This program started at: {time_string}')
 ###############################################################################
 # define CST file folder
-cst_dir = r'D:\CST_Projects\Temp'
+cst_dir = r'C:\CST_Projects\Temp'
 if not os.path.exists(cst_dir):
     os.makedirs(cst_dir)
 

@@ -15,7 +15,7 @@ import time
 start_time = time.time()
 ######################################################################
 # define location to store the CST file
-cst_WorkDir = r"D:\CST_Projects\Temp"
+cst_WorkDir = r"C:\CST_Projects\Temp"
 cst_ProjectName = 'coaxial_antenna'
 cst_file = os.path.join(cst_WorkDir, cst_ProjectName+'.cst')  # close this cst file before you start
 # folder to store exported files
