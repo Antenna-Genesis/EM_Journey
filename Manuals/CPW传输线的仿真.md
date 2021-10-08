@@ -52,10 +52,15 @@ The figure below shows an HFSS model of a coplanar transmission  line. The left 
 
 ![image-20211007173203807](C:\Users\Kai\AppData\Roaming\Typora\typora-user-images\image-20211007173203807.png)
 
-按照这一设置准则，以及考虑wave port需要金属背腔（也可以直接贴近辐射边界）的条件，我们构建了如下所示的仿真结构。
+按照这一设置准则，以及考虑wave port需要金属背腔（也可以直接贴近辐射边界？括号内存疑，待验证）的条件，我们构建了如下所示的仿真结构。
 
 ![image-20211007174451438](C:\Users\Kai\AppData\Roaming\Typora\typora-user-images\image-20211007174451438.png)
 
 相比于之前的lumped port馈电，现在的wave port馈电，在普通的S参数之外，还可以直接提供CPW传输线特征阻抗的计算数值。这意味着，采用wave port方式，我们可以更快更直接的获得特征阻抗等于50ohm的CPW参数。
 
 ![image-20211007174843021](C:\Users\Kai\AppData\Roaming\Typora\typora-user-images\image-20211007174843021.png)
+
+lumped port和wave port两种馈电方式的对比：
+
+wave port会更准确一些，lumped port更灵活一些；如果可以用wave port，还是用它更可靠，相当于是模拟了无限长的传输线馈电；lumped port的话，虽然竖直馈电情况下，寄生电抗会明显减小，但是依然存在一个理想电压源（只有信号信与下层地板之间有电压差）到GCPW传输线（信号线与下层底板、同层底板之间均有电压差）的转换，会残存一些寄生电抗。
+
