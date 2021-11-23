@@ -27,16 +27,16 @@ The path to an EM expert
 
 在所有人要求的基础上
 
-1. 完成《Learn Python the Hard Way》的学习（在线书https://github.com/ubarredo/LearnPythonTheHardWay）；
-2. Kraus的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/251/）；
-3. Pozar的微波工程过一遍（配套练习https://tbc-python.fossee.in/book-details/814/）；
-5. MIT Walter Lewin的电磁学视频过一遍（https://www.bilibili.com/video/BV124411R7r2?share_source=copy_web）；
-6. 费曼物理学讲义的电磁部分过一遍（https://www.feynmanlectures.caltech.edu/）；
-7. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j?share_source=copy_web）；
+1. 完成《Learn Python the Hard Way》的学习（在线书 https://github.com/ubarredo/LearnPythonTheHardWay ）；
+2. Kraus的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/251 ）；
+3. Pozar的微波工程过一遍（配套练习 https://tbc-python.fossee.in/book-details/814 ）；
+5. MIT Walter Lewin的电磁学视频过一遍（ https://www.bilibili.com/video/BV124411R7r2 ）；
+6. 费曼物理学讲义的电磁部分过一遍（ https://www.feynmanlectures.caltech.edu ）；
+7. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j ）；
 8. 如果自己搞不定，尽早邀请指导老师或同伴介入自己的问题，不自己闷头做或者回避；
 9. 使用并帮助维护组里共用的Python库来做仿真工作和数据处理；
 10. 阅读天线领域大牛们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）；
-11. 阅读近30年来IEEE APS的获奖文章（https://ieeeaps.org/about-the-transactions/best-paper-awards）；
+11. 阅读近30年来IEEE APS的获奖文章（ https://ieeeaps.org/about-the-transactions/best-paper-awards ）；
 12. 每周一次文献学习会，每人分享对一篇文章的理解；
 13. 做研究记录和整理回顾。如无特殊情况，例会时候需要展示之前工作的总结；
 14. 自觉设置进度条，每次讨论完都约下次的讨论时间和讨论内容。
@@ -46,10 +46,10 @@ The path to an EM expert
 在本科要求的基础上
 
 1. 梁昌洪的简明微波过一遍；
-2. 梁昌洪的微波技术基础视频过一遍（https://www.bilibili.com/video/av90034984/）；
-3. Balanis的天线书过一遍（配套练习https://tbc-python.fossee.in/book-details/876/）；
-4. Gilbert Strang的Introduction to Linear Algebra视频过一遍（https://www.bilibili.com/video/BV1zT4y1u7c7?share_source=copy_web）；
-5. 姜颖的数学物理方程视频过一遍（新出的，很适合跟学，https://space.bilibili.com/548272388?from=search&seid=8038279172488147472）；
+2. 梁昌洪的微波技术基础视频过一遍（ https://www.bilibili.com/video/av90034984 ）；
+3. Balanis的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/876 ）；
+4. Gilbert Strang的Introduction to Linear Algebra视频过一遍（ https://www.bilibili.com/video/BV1zT4y1u7c7 ）；
+5. 姜颖的数学物理方程视频过一遍（新出的，很适合跟学，https://space.bilibili.com/548272388 ）；
 6. 旁听中大的数学物理方法课程；
 7. 旁听中大的学术规范与科技论文写作；
 8. 选一种算法，分别实现dipole，patch，slot天线的电磁计算；
