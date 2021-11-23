@@ -94,7 +94,7 @@
 
    ![image-20210618134316254](Gitee%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97.assets/image-20210618134316254.png)
 
-   注意：如果进入了git log想出来，确保输入法在英文状态下，输入q即可（https://blog.csdn.net/weixin_41287260/article/details/89813851）。
+   注意：如果进入了git log想出来，确保输入法在英文状态下，输入q即可（ https://blog.csdn.net/weixin_41287260/article/details/89813851 ）。
 
    
 
@@ -113,7 +113,7 @@
 
       https://www.liaoxuefeng.com/wiki/896043488029600/1163625339727712
 
-      #### 另外，增加一点那个页面没有的信息（https://gitee.com/help/articles/4181#article-header0）。
+      #### 另外，增加一点那个页面没有的信息（ https://gitee.com/help/articles/4181#article-header0 ）。
 
       #### 	廖雪峰教程中没有提到授权ssh的步骤，可能会导致无法同步。
 
