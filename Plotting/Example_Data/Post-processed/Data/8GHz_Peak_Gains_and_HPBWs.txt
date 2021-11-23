@@ -1,0 +1,23 @@
+Max simulated gain is 8.339dB; 
+
+Max measured gain is 8.05340845620693dB; 
+
+Simulation, 3dB beamwidth in phi=0deg plane: 68; 
+
+Simulation, 3dB AR beamwidth in phi=0deg plane: 169; 
+
+Simulation, 3dB beamwidth in phi=90deg plane: 68; 
+
+Simulation, 3dB AR beamwidth in phi=90deg plane: 163; 
+
+Simulation, beam area: 4624; 
+
+Measurement, 3dB beamwidth in phi=0deg plane: 63; 
+
+Measurement, 3dB AR beamwidth in phi=0deg plane: 177; 
+
+Measurement, 3dB beamwidth in phi=90deg plane: 66; 
+
+Measurement, 3dB AR beamwidth in phi=90deg plane: 180; 
+
+Measurement, beam area: 4158.
