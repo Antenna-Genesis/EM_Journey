@@ -61,7 +61,7 @@ Driver version: 12.18.9.1
 - [x] Windows Terminal
 - [x] PowerShell 7
 - [x] Anaconda
-- [ ] HFSS: AEDT v2021 R2, v2020 R2, ANSYS HFSS 15
+- [x] HFSS: AEDT v2021 R2, v2020 R2, ANSYS HFSS 15
 - [x] CST: Dassault Systèmes Simulia CST STUDIO SUITE 2019
 - [x] OpenSSH server
 - [ ] WSL2
@@ -83,9 +83,17 @@ Microsoft Windows Server 2022 Datacenter
 |Secure Boot State|Off|
 |Installed Physical Memory (RAM)|1.00 TB|
 
+### HFSS
+
+- AEDT 2021 R2
+- AEDT 2020 R2
+- HFSS 15
+
 ### CST
 
+CST Studio Suite 2019
 
+No SP update installed
 
 ### Utilities
 
