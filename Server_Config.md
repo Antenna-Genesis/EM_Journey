@@ -58,6 +58,8 @@ Driver version: 12.18.9.1
 
 ### To-dos
 
+- [ ] Gig
+- [ ] OneDrive
 - [x] Windows Terminal
 - [x] PowerShell 7
 - [x] Anaconda
