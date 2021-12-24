@@ -62,7 +62,8 @@ Driver version: 12.18.9.1
 - [x] PowerShell 7
 - [x] Anaconda
 - [x] HFSS: AEDT v2021 R2, v2020 R2, ANSYS HFSS 15
-- [x] CST: Dassault Systèmes Simulia CST STUDIO SUITE 2019
+- [x] CST: DS SIMULIA CST STUDIO SUITE 2019
+- [ ] Magus: DS SIMULIA Antenna Magus
 - [x] OpenSSH server
 - [ ] WSL2
 - [x] Configure SMB
@@ -86,8 +87,8 @@ Microsoft Windows Server 2022 Datacenter
 ### HFSS
 
 - AEDT 2021 R2
-- AEDT 2020 R2
-- HFSS 15
+- AEDT 2020 R2 (not cracked yet)
+- HFSS 15 (not cracked yet)
 
 ### CST
 
