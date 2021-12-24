@@ -9,6 +9,8 @@
   - to-do
 - Windows Admin Center
   - https://server.waferlab.tk or https://172.18.217.168
+- SMB
+  - D: was mapped to `\\server.waferlab.tk\Data`
 
 ## Hardware
 
@@ -56,14 +58,16 @@ Driver version: 12.18.9.1
 
 ### To-dos
 
-- [ ] Windows Terminal
-- [ ] PowerShell 7
+- [x] Windows Terminal
+- [x] PowerShell 7
+- [x] Anaconda
 - [ ] HFSS: AEDT v2021 R2, v2020 R2, ANSYS HFSS 15
-- [ ] CST: Dassault Systèmes Simulia CST STUDIO SUITE 2019
-- [ ] OpenSSH server
+- [x] CST: Dassault Systèmes Simulia CST STUDIO SUITE 2019
+- [x] OpenSSH server
 - [ ] WSL2
-- [ ] Configure SMB
+- [x] Configure SMB
 - [ ] Configure auto backup
+- [x] Internet Download Manager
 - [x] `winget`
 
 ### Operating System
@@ -79,6 +83,10 @@ Microsoft Windows Server 2022 Datacenter
 |Secure Boot State|Off|
 |Installed Physical Memory (RAM)|1.00 TB|
 
+### CST
+
+
+
 ### Utilities
 
 - Windows Store (patched)
@@ -86,3 +94,14 @@ Microsoft Windows Server 2022 Datacenter
 - Windows Security
 - Server Manager
 - Dell Support Assist
+
+### Browser
+
+- Google Chrome
+- Microsoft Edge
+
+### Python
+
+Anaconda3
+
+Path: `C:\ProgramData\Miniconda3`
