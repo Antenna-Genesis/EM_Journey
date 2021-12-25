@@ -6,7 +6,7 @@
   - Computer: `server.waferlab.tk` or `172.18.217.168`
   - Default port
 - OpenSSH
-  - to-do
+  - Default port
 - Windows Admin Center
   - https://server.waferlab.tk or https://172.18.217.168
 - SMB
@@ -58,8 +58,8 @@ Driver version: 12.18.9.1
 
 ### To-dos
 
-- [ ] Gig
-- [ ] OneDrive
+- [x] Git
+- [x] OneDrive
 - [x] Windows Terminal
 - [x] PowerShell 7
 - [x] Anaconda
@@ -116,3 +116,12 @@ No SP update installed
 Anaconda3
 
 Path: `C:\ProgramData\Miniconda3`
+
+### Git
+
+Git version 2.34.1.windows.1
+
+### PowerShell
+
+- PowerShell 7.2
+- OhMyPosh
