@@ -3,14 +3,93 @@
 ## Access
 
 - Windows Remote Desktop
-  - Computer: `server.waferlab.tk` or `172.18.217.168`
+  - Computer: `server.waferlab.dev` or `172.18.217.168`
   - Default port
 - OpenSSH
   - Default port
 - Windows Admin Center
-  - https://server.waferlab.tk or https://172.18.217.168
+  - https://server.waferlab.dev or https://172.18.217.168
 - SMB
-  - D: was mapped to `\\server.waferlab.tk\Data`
+  - D: was mapped to `\\server.waferlab.dev\Data`
+
+## Software
+
+### To-dos
+
+- [x] OneDrive
+- [x] HFSS: AEDT v2021 R2, v2020 R2, ANSYS HFSS 15
+- [x] CST: DS SIMULIA CST STUDIO SUITE 2019
+- [ ] Magus: DS SIMULIA Antenna Magus
+- [x] WSL2
+- [ ] Configure auto backup
+
+### Operating System
+
+Microsoft Windows Server 2022 Datacenter
+
+|Item|Value|
+|:--|:--|
+|Version|10.0.20348 Build 20348|
+|System Name|EM-SERVER-4RSKT|
+|System Model|Precision 7920 Tower|
+|BIOS Version/Date|Dell Inc. 2.16.1, 2021/11/13|
+|Secure Boot State|Off|
+|Installed Physical Memory (RAM)|1.00 TB|
+
+### HFSS
+
+- AEDT 2021 R2
+- AEDT 2020 R2 (not cracked yet)
+- HFSS 15 (not cracked yet)
+
+### CST
+
+CST Studio Suite 2019
+
+No SP update installed
+
+### Utilities
+
+#### Package Manager
+
+- Windows Store (patched)
+- WinGet
+
+#### File & Downloads
+
+- WinRAR
+- Internet Download Manager
+
+#### Security
+
+- Windows Security
+
+#### Maintenance
+
+- Server Manager
+- Dell Support Assist
+
+### Browser
+
+- Google Chrome
+- Microsoft Edge
+
+### Python Environment
+
+Anaconda3 verison py39-4.11
+
+Path: `C:\ProgramData\Miniconda3`
+
+### Version Control
+
+#### Git
+
+Git version 2.34.1.windows.1
+
+### PowerShell
+
+- PowerShell 7.2
+- OhMyPosh
 
 ## Hardware
 
@@ -53,75 +132,3 @@ Driver:
 Driver version: 12.18.9.1
 
 ### Optical Drive
-
-## Software
-
-### To-dos
-
-- [x] Git
-- [x] OneDrive
-- [x] Windows Terminal
-- [x] PowerShell 7
-- [x] Anaconda
-- [x] HFSS: AEDT v2021 R2, v2020 R2, ANSYS HFSS 15
-- [x] CST: DS SIMULIA CST STUDIO SUITE 2019
-- [ ] Magus: DS SIMULIA Antenna Magus
-- [x] OpenSSH server
-- [ ] WSL2
-- [x] Configure SMB
-- [ ] Configure auto backup
-- [x] Internet Download Manager
-- [x] `winget`
-
-### Operating System
-
-Microsoft Windows Server 2022 Datacenter
-
-|Item|Value|
-|:--|:--|
-|Version|10.0.20348 Build 20348|
-|System Name|EM-SERVER-4RSKT|
-|System Model|Precision 7920 Tower|
-|BIOS Version/Date|Dell Inc. 2.16.1, 2021/11/13|
-|Secure Boot State|Off|
-|Installed Physical Memory (RAM)|1.00 TB|
-
-### HFSS
-
-- AEDT 2021 R2
-- AEDT 2020 R2 (not cracked yet)
-- HFSS 15 (not cracked yet)
-
-### CST
-
-CST Studio Suite 2019
-
-No SP update installed
-
-### Utilities
-
-- Windows Store (patched)
-- WinRAR
-- Windows Security
-- Server Manager
-- Dell Support Assist
-
-### Browser
-
-- Google Chrome
-- Microsoft Edge
-
-### Python
-
-Anaconda3
-
-Path: `C:\ProgramData\Miniconda3`
-
-### Git
-
-Git version 2.34.1.windows.1
-
-### PowerShell
-
-- PowerShell 7.2
-- OhMyPosh
