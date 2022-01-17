@@ -8,7 +8,7 @@
 - OpenSSH
   - Default port
 - Windows Admin Center
-  - https://server.waferlab.dev or https://172.18.217.168
+  - https://server.waferlab.dev/1080
 - SMB
   - D: was mapped to `\\server.waferlab.dev\Data`
 
@@ -16,11 +16,11 @@
 
 ### To-dos
 
+- [x] Docker
 - [x] OneDrive
 - [x] HFSS: AEDT v2021 R2, v2020 R2, ANSYS HFSS 15
 - [x] CST: DS SIMULIA CST STUDIO SUITE 2019
 - [ ] Magus: DS SIMULIA Antenna Magus
-- [x] WSL2
 - [ ] Configure auto backup
 
 ### Operating System
@@ -74,6 +74,10 @@ No SP update installed
 - Google Chrome
 - Microsoft Edge
 
+### Docker
+
+Docker with Hyper-V backend
+
 ### Python Environment
 
 Anaconda3 verison py39-4.11
@@ -90,6 +94,10 @@ Git version 2.34.1.windows.1
 
 - PowerShell 7.2
 - OhMyPosh
+
+### WSL
+
+WSL 2 is not supported in server SKUs.
 
 ## Hardware
 
