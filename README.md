@@ -21,7 +21,8 @@ The path to an EM expert
 11. 如无特殊情况，按时参加组会（现场和线上）。遇到不能参加或者迟到的情况，需在群组中向大家说明；
 12. 有新人加入时，每个人需简单介绍一下自己：家乡在哪里？有几个兄弟姐妹？童年经历过什么挑战？个人爱好？讲一个发生在自己身上的笑话（别人不笑很正常）;
 13. 时常提醒自己，如果现在写一份求职简历，应该呈现出哪些闪光点；
-14. 学习/研究讨论的群组实施动态管理，仅面向现有成员开放，毕业成员自动被转移到“组友群”。
+14. 学习/研究讨论的群组实施动态管理，仅面向现有成员开放，毕业成员自动被转移到“组友群”；
+14. “礼物”只能从老师流向学生，不能反向。
 
 #### 本科
 
@@ -30,16 +31,16 @@ The path to an EM expert
 1. 完成《Learn Python the Hard Way》的学习（在线书 https://github.com/ubarredo/LearnPythonTheHardWay ）；
 2. Kraus的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/251 ）；
 3. Pozar的微波工程过一遍（配套练习 https://tbc-python.fossee.in/book-details/814 ）；
-5. MIT Walter Lewin的电磁学视频过一遍（ https://www.bilibili.com/video/BV124411R7r2 ）；
-6. 费曼物理学讲义的电磁部分过一遍（ https://www.feynmanlectures.caltech.edu ）；
-7. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j ）；
-8. 如果自己搞不定，尽早邀请指导老师或同伴介入自己的问题，不自己闷头做或者回避；
-9. 使用并帮助维护组里共用的Python库来做仿真工作和数据处理；
-10. 阅读天线领域大牛们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）；
-11. 阅读近30年来IEEE APS的获奖文章（ https://ieeeaps.org/about-the-transactions/best-paper-awards ）；
-12. 每周一次文献学习会，每人分享对一篇文章的理解。如有研究任务，介绍自己的研究工作即可；
-13. 做研究记录和整理回顾。如无特殊情况，例会时候需要展示之前工作的总结；
-14. 自觉设置进度条，每次讨论完都约下次的讨论时间和讨论内容。
+4. MIT Walter Lewin的电磁学视频过一遍（ https://www.bilibili.com/video/BV124411R7r2 ）；
+5. 费曼物理学讲义的电磁部分过一遍（ https://www.feynmanlectures.caltech.edu ）；
+6. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j ）；
+7. 如果自己搞不定，尽早邀请指导老师或同伴介入自己的问题，不自己闷头做或者回避；
+8. 使用并帮助维护组里共用的Python库来做仿真工作和数据处理；
+9. 阅读天线领域大牛们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）；
+10. 阅读近30年来IEEE APS的获奖文章（ https://ieeeaps.org/about-the-transactions/best-paper-awards ）；
+11. 每周一次文献学习会，每人分享对一篇文章的理解。如有研究任务，介绍自己的研究工作即可；
+12. 做研究记录和整理回顾。如无特殊情况，例会时候需要展示之前工作的总结；
+13. 自觉设置进度条，每次讨论完都约下次的讨论时间和讨论内容。
 
 #### 硕士
 
