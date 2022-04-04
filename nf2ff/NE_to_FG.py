@@ -2,6 +2,7 @@ import numpy as np
 # import cmath
 # import math
 import plot3d
+import heat_plot
 import seaborn
 import matplotlib.pyplot as plt
 
