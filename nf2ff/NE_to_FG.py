@@ -140,7 +140,8 @@ if __name__ == "__main__":
     # plt.figure(2)
     # seaborn.heatmap(np.abs(L_phi))
     # plt.show()
-
+    heat_plot.heat_plot(np.abs(L_theda), np.abs(L_phi), theta, phi, 'L_theda', 'L_phi')
+    plt.show()
     E_theda = -(1j * k * np.exp(-1j * k * R) / (4 * np.pi * R)) * L_phi
     E_phi = (1j * k * np.exp(-1j * k * R) / (4 * np.pi * R)) * L_theda
     # 求功率
