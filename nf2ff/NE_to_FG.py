@@ -1,8 +1,8 @@
 import numpy as np
 # import cmath
 # import math
-import plot3d
-import seaborn
+# import plot3d
+# import seaborn
 import matplotlib.pyplot as plt
 
 
