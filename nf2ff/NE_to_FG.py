@@ -1,8 +1,14 @@
 import numpy as np
 # import cmath
 # import math
+<<<<<<< HEAD
 # import plot3d
 # import seaborn
+=======
+import plot3d
+import heat_plot
+import seaborn
+>>>>>>> ec7709f98cb4d8fb6b7a247458b4057dee0d7cfd
 import matplotlib.pyplot as plt
 
 
@@ -140,7 +146,8 @@ if __name__ == "__main__":
     # plt.figure(2)
     # seaborn.heatmap(np.abs(L_phi))
     # plt.show()
-
+    heat_plot.heat_plot(np.abs(L_theda), np.abs(L_phi), theta, phi, 'L_theda', 'L_phi')
+    plt.show()
     E_theda = -(1j * k * np.exp(-1j * k * R) / (4 * np.pi * R)) * L_phi
     E_phi = (1j * k * np.exp(-1j * k * R) / (4 * np.pi * R)) * L_theda
     # 求功率
