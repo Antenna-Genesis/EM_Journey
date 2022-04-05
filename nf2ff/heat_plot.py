@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 
-def heat_plot(Gain1, Gain2, x_, y_, title1, title2):
+def heat_plot(Gain1, Gain2, x_, y_, title1, title2, x_label, y_label):
     # x轴范围，y轴范围，标题
     # 这里是创建一个数据
 
@@ -44,4 +44,8 @@ def heat_plot(Gain1, Gain2, x_, y_, title1, title2):
     fig.tight_layout()
     fig.colorbar(im1, ax = ax[0])
     fig.colorbar(im2, ax = ax[1])
+    ax[0].set_xlabel(x_label)
+    ax[1].set_xlabel(x_label)
+    ax[0].set_ylabel(y_label)
+    ax[1].set_ylabel(y_label)
     # plt.show()
