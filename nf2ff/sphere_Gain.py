@@ -106,6 +106,7 @@ if __name__ == "__main__":
     #print(Gain[:, 7])
     heat_plot.heat_plot(np.abs(P_AUT), Gain, theta, phi, 'P_AUT', 'Gain', 'phi/deg', 'theta/deg')
     np.save('Gain.npy', Gain)
-    print(np.max(Gain))
+    np.savetxt('Gain.csv', Gain)
+    print('最大增益：', np.max(Gain))
     plt.show()
     # plot3d.plot_3D(Gain)
