@@ -11,9 +11,10 @@ M = 16
 # print(column)
 # column = float(column)
 Gain = np.array(column)
+Gain1 = np.loadtxt('Gain.csv', dtype=float)
 # Gain = np.float(Gain)
 Gain = np.array(Gain).reshape(M, M)
-Gain1 = loadcsv.load('Gain.csv')
+Gain1 = np.array(Gain1).reshape(M, M)
 print('phi=180deg时的增益', Gain1[:,7])
 Gain_p = abs(Gain1 - Gain)
 dataset = Gain_p[:4, :]
