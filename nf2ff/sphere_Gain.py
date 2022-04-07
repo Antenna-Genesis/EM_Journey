@@ -85,17 +85,13 @@ if __name__ == "__main__":
                     1j * k * r_cos[:, every_Ey]), dx)
 
             dy = np.arange(-Sy / 2, Sy / 2 + 1e-5, (Sy / (n - 1)))
-            L_theda[theda_][phi_] = integrate.trapz(
-                    E_intTheta
-                    , dy)
-            L_phi[theda_][phi_] = integrate.trapz(E_intPhi , dy)
+            L_theda[theda_][phi_] = integrate.trapz(E_intTheta, dy)
+            L_phi[theda_][phi_] = integrate.trapz(E_intPhi, dy)
 
     heat_plot.heat_plot(np.abs(L_theda), np.abs(L_phi), theta, phi, 'L_theda', 'L_phi', 'phi/deg', 'theta/deg')
     # plt.show()
-    E_theda = -(1j * k * np.exp(-1j * k * R) / (
-            4 * np.pi * R)) * L_phi
-    E_phi = (1j * k * np.exp(-1j * k * R) / (
-            4 * np.pi * R)) * L_theda
+    E_theda = -(1j * k * np.exp(-1j * k * R) / (4 * np.pi * R)) * L_phi
+    E_phi = (1j * k * np.exp(-1j * k * R) / (4 * np.pi * R)) * L_theda
     heat_plot.heat_plot(np.abs(E_theda), np.abs(E_phi), theta, phi, 'E_theda', 'E_phi', 'phi/deg', 'theta/deg')
     # 求功率
     P_AUT = (np.abs(E_theda) ** 2 + np.abs(E_phi) ** 2) / Z_0  # 波印廷矢量
