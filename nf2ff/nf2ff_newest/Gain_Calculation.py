@@ -51,8 +51,8 @@ def sphere_gain(filename1, filename2, d, sam_num, Sx, Sy, csv_type='E'):
         Ey = sqrt(1 / (0.13 * 0.1 * 0.1) * S21y * S * Z_0)
     # 得到的近场进行衡量是否适合近远场变换
     NF_Test.nf_test(Ex, Ey, Sx_sam, Sx)
-    theta = np.linspace(0, np.pi / 2, 16)
-    phi = np.linspace(0, 2 * np.pi, 16)
+    theta = np.linspace(0, np.pi / 2, Sx_sam)
+    phi = np.linspace(0, 2 * np.pi, Sy_sam)
     # P_nearfield = 1.2  # 近场功率
     P_nearfield = 0
     for i in range(Sx_sam):
