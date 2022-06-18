@@ -2,7 +2,7 @@
 
 ## Access
 
-- Windows Remote Desktop
+- ~~Windows Remote Desktop~~: Unavailable due to RDS licence
   - Computer: `server.waferlab.dev` or `172.18.217.168`
   - Default port
 - OpenSSH
@@ -11,8 +11,13 @@
   - https://server.waferlab.dev/1080
 - SMB
   - D: was mapped to `\\server.waferlab.dev\Data`
+- SunLogin
 
 ## Software
+
+### Proposal
+
+Switch to Linux installation (preferably Ubuntu Server), and configure Windows virtual machine, sharing half the resources.
 
 ### To-dos
 
