@@ -24,7 +24,7 @@ Switch to Linux installation (preferably Ubuntu Server), and configure Windows v
 - [x] Docker
 - [x] OneDrive
 - [x] HFSS: AEDT v2021 R2, v2020 R2, ANSYS HFSS 15
-- [x] CST: DS SIMULIA CST STUDIO SUITE 2019
+- [x] CST: DS SIMULIA CST STUDIO SUITE 2019 SP3
 - [ ] Magus: DS SIMULIA Antenna Magus
 - [ ] Configure auto backup
 
@@ -49,7 +49,7 @@ Microsoft Windows Server 2022 Datacenter
 
 ### CST
 
-CST Studio Suite 2019
+CST Studio Suite 2019 SP3
 
 No SP update installed
 
