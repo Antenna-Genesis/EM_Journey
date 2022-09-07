@@ -101,7 +101,25 @@ class HFSS:
         val=float(re.findall(r"\-?\d+\.?\d*",Var_name)[0])
         unit=''.join(re.findall(r'[A-Za-z]', Var_name))
         return val,unit
-
+    def changename(self,name1,name2):
+        self.oEditor.ChangeProperty(
+        	[
+        		"NAME:AllTabs",
+        		[
+        			"NAME:Geometry3DAttributeTab",
+        			[
+        				"NAME:PropServers",
+        				name1
+        			],
+        			[
+        				"NAME:ChangedProps",
+        				[
+        					"NAME:Name",
+        					"Value:="		, name2
+        				]
+        			]
+        		]
+        	])
 
 ######################################################################
 # Create box, Cylinder,Regularpolyhedron         Material: 'defined material'
@@ -261,12 +279,33 @@ class HFSS:
                            "SetLambdaTarget:=", False,"Target:=", 0.3333,"UseMaxTetIncrease:=", False,"UseDomains:=", False,"UseIterativeSolver:=", False,
                            "SaveRadFieldsOnly:="	, False,"SaveAnyFields:="	, True,"IESolverType:="	, "Auto","LambdaTargetForIESolver:=", 0.15,"UseDefaultLambdaTgtForIESolver:=", True])
 
-    def insertFrequencysweep(self, Setupname, Minfrequency, Maxfrequency, Step, Sweep_type):
+
+    def insertFrequencysweep(self, Setupname, Minfrequency, Maxfrequency, number, Sweep_type):
         self.oModule = self.oDesign.GetModule("AnalysisSetup")
         self.oModule.InsertFrequencySweep(Setupname,
-    	                            ["NAME:Sweep", "IsEnabled:=", True, "RangeType:=", "LinearStep", "RangeStart:=", Minfrequency,
-    		                         "RangeEnd:=", Maxfrequency, "RangeStep:=", Step, "Type:=", Sweep_type, "SaveFields:=", True, "SaveRadFields:=", False, "ExtrapToDC:=", False])
-
+                                          [
+                                              "NAME:Sweep",
+                                              "IsEnabled:="	, True,
+                                              "SetupType:="		, "LinearCount",
+                                              "StartValue:="		, Minfrequency,
+                                              "StopValue:="		, Maxfrequency,
+                                              "Count:="		, number,
+                                              "Type:="		, Sweep_type,
+                                              "SaveFields:="		, False,
+                                              "SaveRadFields:="	, False,
+                                              "InterpTolerance:="	, 0.5,
+                                              "InterpMaxSolns:="	, 250,
+                                              "InterpMinSolns:="	, 0,
+                                              "InterpMinSubranges:="	, 1,
+                                              "ExtrapToDC:="		, False,
+                                              "InterpUseS:="		, True,
+                                              "InterpUsePortImped:="	, False,
+                                              "InterpUsePropConst:="	, True,
+                                              "UseDerivativeConvergence:=", False,
+                                              "InterpDerivTolerance:=", 0.2,
+                                              "UseFullBasis:="	, True,
+                                              "EnforcePassivity:="	, False
+                                          ])
     def solve(self, Setupname):
         self.oDesktop.RestoreWindow()
         self.oDesign.Analyze(Setupname)
@@ -304,7 +343,20 @@ class HFSS:
     def unitet(self, Object1,Object2):
         self.oEditor.Unite(["NAME:Selections", "Selections:=", Object1 + ',' + Object2],
                       ["NAME:UniteParameters", "KeepOriginals:=", True])
-
+    def unitefn(self, *para):
+        newstr1 = ' '
+        for item in para:
+            newstr1 = newstr1 + item + ','
+        newstr1 = newstr1[:-1]
+        self.oEditor.Unite(
+            [
+                "NAME:Selections",
+                "Selections:="	,newstr1
+            ],
+            [
+                "NAME:UniteParameters",
+                "KeepOriginals:="	, False
+            ])
 
 ######################################################################
 # Subtract Object1 by Object2
@@ -619,7 +671,7 @@ class HFSS:
 #       createRectangulzrfarfieldpreport('RadiationPattern','Setup1','All', 0,'10Ghz') #Phi=0 plane
 #       deleteAllreports()
 ######################################################################
-
+    ##Origin version
     # def createSpreport(self, Reportname,Setupname,Result_items):
     #     self.oModule = self.oDesign.GetModule("ReportSetup")
     #     self.oModule.CreateReport(Reportname, "Modal Solution Data", "Rectangular Plot", Setupname+": Sweep",
@@ -724,12 +776,12 @@ class HFSS:
         self.oModule.ExportToFile(Reportname, Savepath+"\\"+Savefilename)
 
 
-#    def exportTofile(self, Reportname, Savepath, Savefilename, Save_num):
-#        if not os.path.exists(Savepath):
-#                os.makedirs(Savepath)
-#        Savefilename = Savefilename + str(Save_num)+'.CSV'
-#        self.oModule = self.oDesign.GetModule("ReportSetup")
-#        self.oModule.ExportToFile(Reportname, os.path.join(Savepath, Savefilename))
+    # def exportTofile(self, Reportname, Savepath, Savefilename, Save_num):
+    #     if not os.path.exists(Savepath):
+    #         os.makedirs(Savepath)
+    #     Savefilename = Savefilename + str(Save_num)+'.CSV'
+    #     self.oModule = self.oDesign.GetModule("ReportSetup")
+    #     self.oModule.ExportToFile(Reportname, os.path.join(Savepath, Savefilename))
 
     def exportTosnp(self, Savepath, Savefilename, Save_num):
         self.oModule = self.oDesign.GetModule("Solutions")
