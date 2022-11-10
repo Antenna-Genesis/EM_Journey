@@ -32,25 +32,24 @@ The path to an EM expert
 
 ## **任务**
 
-### **本科**
+### **本科和硕士一年级**
 
 1. 完成《Learn Python the Hard Way》的学习（在线书 https://github.com/ubarredo/LearnPythonTheHardWay ）；
 2. Kraus的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/251 ）；
 3. Pozar的微波工程过一遍（配套练习 https://tbc-python.fossee.in/book-details/814 ）；
-4. MIT Walter Lewin的电磁学视频过一遍（ https://www.bilibili.com/video/BV124411R7r2 ）；
-5. 费曼物理学讲义的电磁部分过一遍（ https://www.feynmanlectures.caltech.edu ）；
-6. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j ）；
-7. 阅读近30年来IEEE APS的获奖文章（ https://ieeeaps.org/about-the-transactions/best-paper-awards ）；
-8. 阅读天线领域大牛们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）。
+4. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j ）；
+5. MIT Walter Lewin的电磁学视频过一遍（ https://www.bilibili.com/video/BV124411R7r2 ）；
+6. 费曼物理学讲义的电磁部分过一遍（ https://www.feynmanlectures.caltech.edu ）；
+7. 阅读近30年来IEEE APS的获奖文章（ https://ieeeaps.org/about-the-transactions/best-paper-awards ），并做一份获奖文章研究方向简明导图。
 
-### **硕士**
+### **硕士二、三年级**
 
-1. 梁昌洪的简明微波过一遍；
-2. 梁昌洪的微波技术基础视频过一遍（ https://www.bilibili.com/video/av90034984 ）；
-3. Balanis的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/876 ）；
-4. Gilbert Strang的Introduction to Linear Algebra视频过一遍（ https://www.bilibili.com/video/BV1zT4y1u7c7 ）；
-5. 姜颖的数学物理方程视频过一遍（新出的，很适合跟学，https://space.bilibili.com/548272388 ），或者，旁听中大的数学物理方法课程；
-6. 选一种算法，分别实现dipole，patch，slot天线的电磁计算。
+1. Balanis的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/876 ）；
+2. 梁昌洪的简明微波过一遍（配合他讲的微波技术视频： https://www.bilibili.com/video/av90034984 ）；
+3. Gilbert Strang的Introduction to Linear Algebra视频过一遍（ https://www.bilibili.com/video/BV1zT4y1u7c7 ）；
+4. 姜颖的数学物理方程视频过一遍（https://space.bilibili.com/548272388 ），或者旁听中大的数学物理方法课程；
+5. 选一种算法，分别实现dipole，patch，slot天线的电磁计算；
+6. 总结近三十年来天线领域的大牛名单，阅读他们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）。
 
 ### **博士**
 
@@ -58,8 +57,8 @@ The path to an EM expert
 2. Harrington的时谐电磁场过一遍；
 3. 陈志豪的应用电磁学讲义过一遍；
 4. 看懂Chu极限推导《PHYSICAL LIMITATIONS OF OMNIDIRECTIONAL ANTENNAS》；
-5. 阅读天线领域重要研究组的有影响力的过往文章；
-6. 每一期新出的TAP和AWPL都必须要快速浏览一遍，且形成简要文档记录（比如新天线的结构图汇总）；
+5. 阅读天线领域重要研究组的有影响力的过往文章，形成一份“门派”地图；
+6. 每一期新出的TAP和AWPL都必须快速浏览一遍，并争取形成简要文档记录（比如新天线的结构图汇总）；
 7. 经常问自己：提交教职申请的时候，打算怎么用一句话总结自己的研究特色（研究方向）？
 
 ## **组会**
