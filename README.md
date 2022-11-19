@@ -48,8 +48,9 @@ The path to an EM expert
 2. 梁昌洪的简明微波过一遍（配合他讲的微波技术视频： https://www.bilibili.com/video/av90034984 ）；
 3. Gilbert Strang的Introduction to Linear Algebra视频过一遍（ https://www.bilibili.com/video/BV1zT4y1u7c7 ）；
 4. 姜颖的数学物理方程视频过一遍（https://space.bilibili.com/548272388 ），或者旁听中大的数学物理方法课程；
-5. 选一种算法，分别实现dipole，patch，slot天线的电磁计算；
-6. 总结近三十年来天线领域的大牛名单，阅读他们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）。
+5. 搞懂CMA方法，学会使用仿真软件的CMA功能作特征模式分析；
+6. 选一种算法，分别实现dipole，patch，slot天线的电磁计算；
+7. 总结近三十年来天线领域的大牛名单，阅读他们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）。
 
 ### **博士**
 
