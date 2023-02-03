@@ -1,0 +1,5 @@
+gen_dataset:生成数据集的代码，语言为python，与HFSS2020以上版本联合使用
+运行方式：改变dataset.py和simuface.py中的ser_path变量为对应路径，python dataset.py
+
+ga_findbest:用生成的数据集训练的网络指导遗传算法寻优的代码，语言为matlab
+运行方式：matlab下运行findbest.m
