@@ -1,0 +1,3 @@
+打开aedt文件，运行setup文件即可开始
+
+主要改写了costfunction文件
