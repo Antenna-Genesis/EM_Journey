@@ -139,7 +139,7 @@
 
       ​		cat .ssh/id_rsa.pub
 
-   3. ### Github的默认主干分支叫main，Gitee的叫master，需要注意差异，最好保持一致。否则，可能会见到这样的错误：
+   3. ### Github的默认主干分支叫master，Gitee的叫main，需要注意差异，最好保持一致。否则，可能会见到这样的错误：
 
       ​	git push gitee master
       ​	error: src refspec master does not match any.
