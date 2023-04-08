@@ -33,15 +33,17 @@ The path to an EM expert
 
 ## **任务**
 
+所谓“过一遍”，是希望大家从头到尾翻一遍，能看懂多少就是多少，不追求一遍看透，但希望可以在头脑中留下框架性的印记。专业书籍，难度普遍较高，需要翻阅多次。每次遇到专业问题，都需要翻书再认真详读。
+
 ### **本科和硕士一年级**
 
-1. 完成《Learn Python the Hard Way》的学习（在线书 https://github.com/ubarredo/LearnPythonTheHardWay ）；
+1. 完成《Learn Python the Hard Way》的前45章的学习（在线书 https://github.com/ubarredo/LearnPythonTheHardWay ）；
 2. Kraus的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/251 ）；
 3. Pozar的微波工程过一遍（配套练习 https://tbc-python.fossee.in/book-details/814 ）；
 4. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j ）；
 5. MIT Walter Lewin的电磁学视频过一遍（ https://www.bilibili.com/video/BV124411R7r2 ）；
 6. 费曼物理学讲义的电磁部分过一遍（ https://www.feynmanlectures.caltech.edu ）；
-7. 阅读近30年来IEEE APS的获奖文章（ https://ieeeaps.org/about-the-transactions/best-paper-awards ），并做一份获奖文章研究方向简明导图。
+7. 阅读近30年来IEEE APS的获奖文章（ https://ieeeaps.org/about-the-transactions/best-paper-awards ），并汇总成表格，配上文字介绍。
 
 ### **硕士二、三年级**
 
