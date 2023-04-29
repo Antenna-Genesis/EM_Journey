@@ -1,0 +1,64 @@
+{
+   "execution": {
+      "classname": "SMAPowerByEmagHPCFrame",
+      "libname": "SMAPowerByEmagUI"
+   },
+   "inputVariables": [
+      {
+         "name": "Ground_radius",
+         "type": "float",
+         "value": 40.0
+      },
+      {
+         "name": "Ground_height",
+         "type": "float",
+         "value": 2.0
+      },
+      {
+         "name": "Mono_r",
+         "type": "float",
+         "value": 0.635
+      },
+      {
+         "name": "Mono_p",
+         "type": "float",
+         "value": 10.0
+      },
+      {
+         "name": "Feed_h",
+         "type": "float",
+         "value": 9.0
+      },
+      {
+         "name": "mono_h",
+         "type": "float",
+         "value": 7.3
+      },
+      {
+         "name": "DR_r",
+         "type": "float",
+         "value": 8.0
+      },
+      {
+         "name": "DR_h",
+         "type": "float",
+         "value": 23.5
+      },
+      {
+         "name": "DR_radius",
+         "type": "float",
+         "value": 12.0
+      },
+      {
+         "name": "DR_height",
+         "type": "float",
+         "value": 22.0
+      },
+      {
+         "name": "Monopole_height",
+         "type": "float",
+         "value": 10.0
+      }
+   ],
+   "outputVariables": []
+}
