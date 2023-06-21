@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jan 18 13:19:51 2021
-
 @author: YANG Chen
+modify: bht
 """
 from HFSS import HFSS
 import numpy as np

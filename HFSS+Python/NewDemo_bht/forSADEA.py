@@ -3,27 +3,19 @@
 @author: bht
 """
 
-import matplotlib.pyplot as plt
-import matplotlib
 import scipy.stats as st
 import random
 from base import SkoBase
 from HFSS import HFSS
 import numpy as np
 import LHSampling
-import math
-import FindOptimumPoint
-import shutil
-from scipy.stats import norm
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C  # REF就是高斯核函数
+from GPmodel import GPmodel
 
 class forSADEA(SkoBase):
 
     def __init__(self, Optimization_variables,costfunc,
                  n_dim=None, initpop=100, tau=100, lamda=50, max_iter=150,
-                 lb=-1e5, ub=1e5, accu=2,
-                 constraint_eq=tuple(), constraint_ueq=tuple() ):
+                 lb=-np.ones(3), ub=np.ones(3), accu=2):
 
         self.Optimization_variables=Optimization_variables #优化对象
         self.accu=accu         #精度
@@ -42,21 +34,10 @@ class forSADEA(SkoBase):
         assert np.all(self.ub > self.lb), 'upper-bound must be greater than lower-bound'
 
         self.current_iter = 0
-        self.has_constraint = bool(constraint_ueq)
-        self.constraint_ueq = constraint_ueq
-
-        self.is_feasible = np.array([True] * self.initpop)
-
-        namm=list(self.Optimization_variables)
-        bb=np.array([list(self.lb),list(self.ub)]).T
-        qq=LHSampling.DoE_LHS(N=self.initpop,bounds=bb,name_value=namm)
-        qqp=np.array(qq.ParameterArray)
-        for i in range(len(qqp)):
-            qqp[i][:]=qqp[i][:].round(self.accu)
-
-        self.X=qqp
-        print(self.X) #拉丁超立方随机采样生成
+        qq = LHSampling.DoE_LHS(N=self.initpop, lb=self.lb, ub=self.ub)
+        self.X = qq.ParameterArray.round(self.accu)
         self.Y = self.cal_y0()  # y = f(x) for all particle
+
         self.dataset=np.zeros((self.initpop,n_dim+1))
         for i in range(self.initpop):
             self.dataset[i][:-1]=self.X[i]
@@ -65,16 +46,13 @@ class forSADEA(SkoBase):
         self.dataset_sorted = sorted(self.dataset, key=lambda x: x[self.n_dim])
         #print(self.dataset_sorted)
 
-        # record verbose values
-        self.record_mode = False
-        self.record_value = {'X': [], 'V': [], 'Y': []}
+        print('Init best fit: {} at {}'.format(self.ymin,self.argymin))
         print('Init_ Finished')
         print(' ')
     #约束
 
     def cal_y0(self):
         # 初始化节点运算
-        # calculate y for every x in X
         self.Y=np.ones((self.initpop,1))*float("inf")
 
         for i in range(0, self.initpop):
@@ -91,8 +69,7 @@ class forSADEA(SkoBase):
         ds=self.dataset_sorted
         n = len(ds)
         m = len(np)
-        l = 0;
-        r = n - 1
+        l = 0; r = n - 1
         # for i in range(10):
         while True:
             if l + 1 >= r:
@@ -129,74 +106,46 @@ class forSADEA(SkoBase):
             npop[i] = np.clip(u, self.lb, self.ub).round(self.accu) #避免越界
         return npop
 
-    def build_GPmodel(self):
-        kernel = RBF(2, (1e-4, 100))  # 创建高斯过程回归,并训练
-        self.GPreg = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=100,alpha=0.01)
-        utrs=min(self.NFE,self.tau)
-        self.GPreg.fit(self.X[-utrs:], self.Y[-utrs:,0])
+    def run(self, max_iter=None):
 
-    def check_constraint(self, x):
-        # gather all unequal constraint functions
-        for constraint_func in self.constraint_ueq:
-            if constraint_func(x) > 0:
-                return False
-        return True
-
-    def recorder(self):
-        if not self.record_mode:
-            return
-        self.record_value['X'].append(self.X)
-        self.record_value['Y'].append(self.Y)
-
-    def run(self, max_iter=None, precision=1e-5, N=20):
-        c=0
         self.max_iter = max_iter or self.max_iter
-        for iter_num in range(self.max_iter):
-            self.current_iter=iter_num
-            arrdatas=np.array(self.dataset_sorted)
-            P=arrdatas[-self.lam:,:-1]
-            nP=self.DE_generate(P) #生成新点集
-            self.build_GPmodel() #更新模型
 
-            pred_y, pred_std = self.GPreg.predict(nP, return_std=True)
+        utrs = min(self.NFE, self.tau)
+        self.GPreg=GPmodel(self.X[-utrs:], self.Y[-utrs:, 0])
+
+        for iter_num in range(self.max_iter):
+            self.current_iter = iter_num
+
+            P = np.array(self.dataset_sorted)[:self.lam,:-1]
+            nP = self.DE_generate(P) #生成新点集
+
+            pred_y, pred_std = self.GPreg.predict(nP)
+            lcb_nP = pred_y - 2 * pred_std
             # 模型预测
-            minlcb=2147483647
-            minP=0
-            for i in range(self.lam):
-                if pred_y[i]-2*pred_std[i]<minlcb:
-                    minlcb=pred_y[i]-2*pred_std[i]
-                    minP=i
-            print(minP,nP[minP],minlcb)
+
+            minlcb = np.min(lcb_nP)
+            minP = np.argmin(lcb_nP)
+           # print(minP,nP[minP],minlcb)
+
             cost_function_value = self.costfunc(self.Optimization_variables, nP[minP])
+            print(nP[minP],cost_function_value)
             # 计算新集合中LCB最优的那个点
             self.NFE = self.NFE + 1
-            if cost_function_value<self.ymin:
-                self.ymin=cost_function_value
-                self.argymin=nP[minP]
+            if cost_function_value < self.ymin:
+                self.ymin = cost_function_value
+                self.argymin = nP[minP]
 
             gx=nP[minP]
-            gx=np.append(gx,cost_function_value) #只有一维的可以这么做
+            gx=np.append(gx,cost_function_value)
             self.insert_sorted_dataset(gx) #更新有序数据集
 
-            listX=list(self.X)
-            listX.append(nP[minP])
-            self.X=np.array(listX)
-            listY = list(self.Y)
-            listY.append([cost_function_value])
-            self.Y = np.array(listY)
-            listd = list(self.dataset)
-            listd.append(gx)
-            self.dataset = np.array(listd) #更新数据集
+            self.X = np.vstack((self.X,nP[minP]))
+            self.Y = np.vstack((self.Y,[cost_function_value]))
+            self.dataset = np.vstack((self.dataset, gx)) #更新数据集
 
-            # self.update_q()
-            if precision is not None:
-                tor_iter = np.amax(self.Y) - np.amin(self.Y)
-                if tor_iter < precision:
-                    c = c + 1
-                    if c > N:
-                        break
-                else:
-                    c = 0
+            utrs = min(self.NFE, self.tau)
+            self.GPreg.updateModel(self.X[-utrs:], self.Y[-utrs:, 0])  # 更新模型
+
             print('Iter: {}, Best fit: {} at {}'.format(iter_num, self.ymin,self.argymin))
 
         self.best_x, self.best_y = self.argymin, self.ymin
@@ -205,13 +154,11 @@ class forSADEA(SkoBase):
     fit = run
 
 if __name__ == '__main__':
-    import warnings
-    warnings.filterwarnings("ignore")
 
     Optimization_variables = 'DR_radius', 'DR_height', 'Monopole_height'
     import Costfunction
     sy1 = forSADEA(Optimization_variables, Costfunction.costfunction,
                n_dim=3, initpop=30,tau=100,lamda=20,max_iter=30,
-               lb=[8, 16, 4], ub=[12, 24, 14], accu=2)
+               lb=np.array([8, 16, 4]), ub=np.array([12, 24, 14]), accu=2)
     hj, kl = sy1.run()
     print(hj, kl)

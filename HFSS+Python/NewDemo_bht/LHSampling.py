@@ -76,14 +76,13 @@ def ParameterArray(limitArray,
     """
     arr = Partition(sampleNumber, limitArray)
     parametersMatrix = Rearrange(Representative(arr))
-    return  parametersMatrix
+    return  np.array(parametersMatrix)
 
 
 '''以下为类创建'''
 
 class DoE(object):
-    def __init__(self, name_value, bounds):
-        self.name = name_value
+    def __init__(self, bounds):
         self.bounds = bounds
         self.type = "DoE"
         self.result = None
@@ -91,19 +90,20 @@ class DoE(object):
 
 class DoE_LHS(DoE):
     # 拉丁超立方试验样本生成
-    def __init__(self, name_value, bounds, N):
-        DoE.__init__(self, name_value, bounds)
+    def __init__(self, N, lb, ub):
+        bounds = np.array([list(lb), list(ub)]).T
+        DoE.__init__(self, bounds)
         self.type = "LHS"
         self.ParameterArray = ParameterArray(bounds, N)
         self.N = N
-
-    def write_to_csv(self):
-        """
-        将样本数据写入LHS.csv文件，文件保存至运行文件夹内
-        """
-        sample_data = pd.DataFrame(self.ParameterArray, columns=self.name)
-        # print(self.ParameterArray)
-        #sample_data.to_csv("LHS.csv")
+    #
+    # def write_to_csv(self):
+    #     """
+    #     将样本数据写入LHS.csv文件，文件保存至运行文件夹内
+    #     """
+    #     sample_data = pd.DataFrame(self.ParameterArray, columns=self.name)
+    #     # print(self.ParameterArray)
+    #     #sample_data.to_csv("LHS.csv")
 
 '''以下为使用'''
 
