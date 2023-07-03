@@ -12,7 +12,7 @@
 
     2. #### 初始化（假设首先从云端同步到本地）
 
-       1. ##### 创建gitee账户
+       1. ##### 创建gitee账户（YN：显然第一步是拥有自己的公钥，不然根本不可能访问gitee，具体可见https://help.gitee.com/repository/ssh-key/generate-and-add-ssh-public-key）
 
        2. ##### 打开命令行，进入想要存放代码库文件夹的本地磁盘位置
 
@@ -20,7 +20,7 @@
 
        3. ##### 从云端克隆代码库文件夹到本地(仅限第一次操作)
 
-          例如：git clone git@gitee.com:kai-lu/SS-Scripts.git
+          例如：git clone git@gitee.com:kai-lu/SS-Scripts.git（YN：注意，这里是例子，实际是git@gitee.com:kai-lu/EM_Journey.git，一旦写错后面解绑非常麻烦）
 
           克隆操作之后，云端和本地代码库自动关联了起来
 
@@ -38,11 +38,12 @@
 
              之后，可以通过git remote -v来检查
 
-          4. 如果错误的在本地做了初始化，或者想要取消本地的git关联，可以 rm -rf .git
+          4. 如果错误的在本地做了初始化，或者想要取消本地的git关联，可以 rm -rf .git （YN：我使用这句会报错）
 
        5. ##### Ready，go！如其他需求，和组内其他人讨论或者自行搜索
 
 1. ### 从本地上传到gitee云端
+（YN: 这里一定要进入EM_Journaey文件夹）
 
    完成本地编辑后，先add，然后commit，之后push
 
@@ -58,7 +59,33 @@
 
    ![image-20210618125207075](Gitee%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97.assets/image-20210618125207075.png)
 
-   
+   （YN：补充一下，即使按上面流程走一遍这里还是可能报错（参考：https://www.jiyik.com/tm/xwzj/opersys_5451.html）
+
+fatal: 'gitee-ssh' does not appear to be a git repository
+
+fatal: Could not read from remote repository.
+
+审核：
+
+１、git remote -v　需要看到
+
+origin  git@gitee.com:kai-lu/EM_Journey.git (fetch)
+
+origin  git@gitee.com:kai-lu/EM_Journey.git (push)
+
+２、git branch -a　需要看到
+
+main
+
+  remotes/origin/HEAD -> origin/main
+
+  remotes/origin/main
+
+３、推送
+
+git push origin master
+
+）
 
 2. ### 从gitee云端下载到本地
 
@@ -102,7 +129,7 @@
 
    `git pull gitee-ssh main`
 
-   
+   （YN：如果没用，使用git pull origin master）
 
 3. ### 更多信息
    1. ### git的操作可以参考
