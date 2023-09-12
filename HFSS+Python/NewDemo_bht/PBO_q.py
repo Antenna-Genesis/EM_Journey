@@ -9,12 +9,16 @@ from HFSS import HFSS
 import LHSampling
 import math
 from scipy.stats import norm
-from matplotlib import pyplot as plt
 import numpy as np
-from sko.GA import GA
-from GPmodel import GPmodel
+from GPmodel_sklearn import GPmodel_sklearn
+from GPmodel_Gpytorch import GPmodel_Gpytorch
+
 from scipy.optimize import minimize
 from scipy.optimize import Bounds
+from cmaes import CMA
+
+import torch
+device, dtype = torch.device("cpu") ,torch.float64
 
 v=4
 xv=np.linspace(-v,v,500)
@@ -23,45 +27,56 @@ pdfx = norm.pdf(xv)
 c = np.poly1d(np.polyfit(xv, cdfx, 15))
 p = np.poly1d(np.polyfit(xv, pdfx, 16))
 print("xx")
-# norm的正态分布cdf,pdf计算速度过慢，不如自己拟合一个
-# 拟合多项式的计算速度比norm的快七到八倍
+
 def cdf_s(x):
-    if x>4:
-        return 1
-    elif x<-4:
-        return 0
-    else:
-        return c(x)
+    y = c(x)
+    y[x>4] = 1.0
+    y[x<-4] = 0.0
+    return y
 
 def pdf_s(x):
-    if x>4:
-        return 0
-    elif x<-4:
-        return 0
-    else:
-        return p(x)
+    y = p(x)
+    y[x > 4] = 0.0
+    y[x < -4] = 0.0
+    return y
 
 def AuxiOpti(func,  lb, ub):
-    ansx=(lb+ub)/2
-    ansy=np.inf
-    cen=(lb+ub)/2
+    # 辅助优化器，需要酌情考虑它的运算时间
+    ansX_g = (lb + ub) / 2
+    ansy_g = np.inf
+    bb = np.array([list(lb), list(ub)]).T
+    qq = LHSampling.DoE_LHS(N=1, lb=lb, ub=ub) # 在lb，ub中LHS一些mean点，实际效果一般
+    qqP = qq.ParameterArray
+    meanX = np.array(qqP)
+    meanX = np.vstack((meanX, ansX_g)) #再加上中点
 
-    boundd = Bounds(lb,ub)
-    radi = lb-ub
+    for meanx in meanX: #对每个mean点做CMAES
+        optimizer = CMA(mean=meanx, sigma=(ub[0] - lb[0]) / 5, bounds=bb, population_size=60 * len(lb))
+        # 为节省时间建议大批量小重复进行predict
+        ansX = (lb + ub) / 2
+        ansy = np.inf
+        for generation in range(20):
+            solutions = []
+            Xx = []
+            for _ in range(optimizer.population_size):
+                x = optimizer.ask()
+                Xx.append(np.array(x))
+            Xx = np.array(Xx)
+            Yy = func(Xx)
+            if np.min(Yy) < ansy:
+                ansX = Xx[np.argmin(Yy)]
+                ansy = np.min(Yy)
+            for _ in range(len(Xx)):
+                solutions.append((Xx[_], Yy[_]))
+            optimizer.tell(solutions)
+            if optimizer.should_stop():
+                break
 
-    for i in range(5):
-        lbi = np.clip(cen - radi,lb,ub)
-        ubi = np.clip(cen + radi,lb,ub)
-        qq = LHSampling.DoE_LHS(N=10, lb=lbi, ub=ubi)
-        qqp = np.array(qq.ParameterArray)
-        for x0i in qqp:
-            res = minimize(func, x0i, method='l-bfgs-b', bounds=boundd)
-            if res.fun < ansy:
-                ansx = res.x
-                ansy = res.fun
-        radi=radi/2
+        if ansy < ansy_g:
+            ansX_g = ansX
+            ansy_g = ansy
 
-    return ansx,ansy
+    return ansX_g, ansy_g
 
 
 class PBO_q(SkoBase):
@@ -70,7 +85,7 @@ class PBO_q(SkoBase):
                  n_dim=None, initpop=40, max_iter=150,
                  lb=-np.ones(3), ub= np.ones(3), accu=2, q=np.array([1,0,0])):
 
-        self.Optimization_variables=Optimization_variables #优化对象
+        self.Optimization_variables=Optimization_variables #优化对象名字
         self.accu=accu         #精度 小数点后几位
         self.costfunc=costfunc #代价函数
         self.initpop = initpop #初始种群
@@ -79,6 +94,7 @@ class PBO_q(SkoBase):
 
         self.NFE=0 #电磁计算次数
         self.q = q #q[0][1][2] 分别表示每次迭代基于 EI、LCB、PI 选点个数
+        # 推荐LCB,更易于辅助寻优
         # q=[1,0,0]既是最简单的EI贝叶斯优化
         self.lb, self.ub = np.array(lb) * np.ones(self.n_dim), np.array(ub) * np.ones(self.n_dim)
         assert self.n_dim == len(self.lb) == len(self.ub), 'dim == len(lb) == len(ub) is not True'
@@ -103,10 +119,8 @@ class PBO_q(SkoBase):
 
         def costfunction(p):
             pred_y, pred_std = self.GPreg.predict(p)
-            if pred_std < 1e-3:
-                return 0
             # 预测均值 预测标准差
-            v_ = 0  # 参数
+            v_ = 0.3  # 参数
             anss = 1
             if style == 'EI':  # 预期改进
                 tu = (ymin1 - pred_y - v_) / pred_std
@@ -123,14 +137,15 @@ class PBO_q(SkoBase):
                 anss = -anss
 
             if qi > 0 and style!='LCB':  # 除了第一个数之外
-                for ii in range(qi):
-                    hyt = 0
-                    Pa = (p-mm)/sstd
-                    Pb = (RecX[ii]-mm)/sstd
-                    for kk in range(len(RecX[0])):
-                        hyt = hyt + (Pa[kk] - Pb[kk])**2 / th
-                    ru = np.exp(-hyt / 2)
-                    anss = anss * (1 - ru)  # 乘入影响函数
+                Pa = (p - mm) / sstd
+                for jj in range(len(Pa)):
+                    for ii in range(qi):
+                        Pb = (RecX[ii] - mm) / sstd
+                        hyt = 0
+                        for kk in range(len(RecX[0])):
+                            hyt = hyt + (Pa[jj][kk] - Pb[kk])**2 / th[kk]
+                        ru = np.exp(-hyt / 2)
+                        anss[jj] = anss[jj] * (1 - ru)  # 乘入影响函数
             return anss
 
         for qi in range(q):
@@ -149,7 +164,7 @@ class PBO_q(SkoBase):
         self.Y=np.ones((self.initpop,1))*float("inf")
 
         for i in range(0, self.initpop):
-            cost_function_value=self.costfunc(self.Optimization_variables,self.X[i])
+            cost_function_value=self.costfunc(self.X[i])
             self.NFE=self.NFE+1
             self.Y[i,0]=cost_function_value
 
@@ -168,7 +183,7 @@ class PBO_q(SkoBase):
                 Np,ppp = self.SKO_Opti(style[k],self.q[k])
 
                 for i in range(self.q[k]):
-                    cost_function_value = self.costfunc(self.Optimization_variables, Np[i])
+                    cost_function_value = self.costfunc(Np[i])
                     print(Np[i],cost_function_value)
                     # 调用HFSS计算
                     self.NFE = self.NFE + 1
@@ -184,12 +199,11 @@ class PBO_q(SkoBase):
 
     def run(self, max_iter=None):
         self.max_iter = max_iter or self.max_iter
-        self.GPreg = GPmodel(self.X,self.Y)
+        self.GPreg = GPmodel_Gpytorch(self.X,self.Y)
         for iter_num in range(self.max_iter):
             self.current_iter=iter_num
             self.OffspringAcquisition()
             self.GPreg.updateModel(self.X,self.Y)  # 更新模型
-
             print('Iter: {}, Best fit: {} at {}'.format(iter_num, self.ymin,self.argymin))
         self.best_x, self.best_y = self.argymin, self.ymin
         return self.best_x, self.best_y
@@ -197,9 +211,11 @@ class PBO_q(SkoBase):
     fit = run
 
 if __name__ == '__main__':
+
     Optimization_variables = 'DR_radius', 'DR_height', 'Monopole_height'
     import Costfunction
-    pso = PBO_q(Optimization_variables=Optimization_variables,costfunc=Costfunction.costfunction,
+    pbo = PBO_q(Optimization_variables=Optimization_variables,costfunc=Costfunction.costfunction,
                n_dim=3, initpop=3, max_iter=2,
-               lb=np.array([8, 16, 4]), ub=np.array([12, 24, 14]), accu=2, q=np.array([2,1,1]))
-    pso.run()
+               lb=np.array([8, 16, 4]), ub=np.array([12, 24, 14]), accu=2, q=np.array([3,0,0]))
+    xbest,ybest =pbo.run()
+    print(xbest,ybest)
