@@ -9,7 +9,8 @@ from base import SkoBase
 from HFSS import HFSS
 import numpy as np
 import LHSampling
-from GPmodel import GPmodel
+from GPmodel_sklearn import GPmodel_sklearn
+from GPmodel_Gpytorch import GPmodel_Gpytorch
 
 class forSADEA(SkoBase):
 
@@ -17,17 +18,16 @@ class forSADEA(SkoBase):
                  n_dim=None, initpop=100, tau=100, lamda=50, max_iter=150,
                  lb=-np.ones(3), ub=np.ones(3), accu=2):
 
-        self.Optimization_variables=Optimization_variables #优化对象
-        self.accu=accu         #精度
-        self.costfunc=costfunc #代价函数
-        self.initpop = initpop #初始种群数
-        self.tau = tau   #模型纳点数
-        self.lam = lamda #引入DE的最先种群数
+        self.Optimization_variables=Optimization_variables  # 优化对象名字
+        self.accu=accu                                      # 优化精度
+        self.costfunc=costfunc                              # 代价函数
+        self.initpop = initpop                              # 初始种群数
+        self.tau = tau                                      # 模型纳点数
+        self.lam = lamda                                    # 引入DE的最先种群数
 
-        self.n_dim = n_dim     #维度
-        self.max_iter = max_iter  # max iter
-
-        self.NFE=0 #电磁计算次数
+        self.n_dim = n_dim                                  # 维度
+        self.max_iter = max_iter                            # 最大迭代（电磁仿真）次数
+        self.NFE=0                                          # 电磁仿真次数
 
         self.lb, self.ub = np.array(lb) * np.ones(self.n_dim), np.array(ub) * np.ones(self.n_dim)
         assert self.n_dim == len(self.lb) == len(self.ub), 'dim == len(lb) == len(ub) is not True'
@@ -36,7 +36,7 @@ class forSADEA(SkoBase):
         self.current_iter = 0
         qq = LHSampling.DoE_LHS(N=self.initpop, lb=self.lb, ub=self.ub)
         self.X = qq.ParameterArray.round(self.accu)
-        self.Y = self.cal_y0()  # y = f(x) for all particle
+        self.Y = self.cal_y0()  # 初始化种群，采用拉丁超立方采样
 
         self.dataset=np.zeros((self.initpop,n_dim+1))
         for i in range(self.initpop):
@@ -49,14 +49,13 @@ class forSADEA(SkoBase):
         print('Init best fit: {} at {}'.format(self.ymin,self.argymin))
         print('Init_ Finished')
         print(' ')
-    #约束
 
     def cal_y0(self):
         # 初始化节点运算
         self.Y=np.ones((self.initpop,1))*float("inf")
 
         for i in range(0, self.initpop):
-            cost_function_value=self.costfunc(self.Optimization_variables,self.X[i])
+            cost_function_value=self.costfunc(self.X[i])
             self.NFE=self.NFE+1
             self.Y[i,0]=cost_function_value
 
@@ -70,7 +69,6 @@ class forSADEA(SkoBase):
         n = len(ds)
         m = len(np)
         l = 0; r = n - 1
-        # for i in range(10):
         while True:
             if l + 1 >= r:
                 break
@@ -107,18 +105,16 @@ class forSADEA(SkoBase):
         return npop
 
     def run(self, max_iter=None):
-
+        # 具体参考 SADEA 论文
         self.max_iter = max_iter or self.max_iter
-
         utrs = min(self.NFE, self.tau)
-        self.GPreg=GPmodel(self.X[-utrs:], self.Y[-utrs:, 0])
+        self.GPreg = GPmodel_Gpytorch(self.X[-utrs:], self.Y[-utrs:, 0])
 
         for iter_num in range(self.max_iter):
             self.current_iter = iter_num
 
             P = np.array(self.dataset_sorted)[:self.lam,:-1]
             nP = self.DE_generate(P) #生成新点集
-
             pred_y, pred_std = self.GPreg.predict(nP)
             lcb_nP = pred_y - 2 * pred_std
             # 模型预测
@@ -127,7 +123,7 @@ class forSADEA(SkoBase):
             minP = np.argmin(lcb_nP)
            # print(minP,nP[minP],minlcb)
 
-            cost_function_value = self.costfunc(self.Optimization_variables, nP[minP])
+            cost_function_value = self.costfunc(nP[minP])
             print(nP[minP],cost_function_value)
             # 计算新集合中LCB最优的那个点
             self.NFE = self.NFE + 1

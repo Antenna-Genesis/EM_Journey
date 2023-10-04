@@ -10,71 +10,15 @@ import numpy as np
 from Costfunction import costfunction
 
 class PSO(SkoBase):
-    """
-    Parameters
-    --------------------
-    Optimization_variables: tuple with a series of variables
-        The variables you want to do optimal
-    dim : int
-        Number of dimension, which is number of optimized variables.
-    pop : int
-        Size of population, which is the number of Particles. We use 'pop' to keep accordance with GA
-    max_iter : int
-        Max of iter iterations
-    lb : array_like
-        The lower bound of every variables
-    ub : array_like
-        The upper bound of every variables
 
-    optimization_target:
-        target for record
-
-    export_result_dir, export_result_file_name:
-        path and file for postprocess applied in Cost function
-
-    hfss_Optimization_record_dir, hfss_Optimization_record_file_name:
-        path and file for recording the optimization history
-
-    constraint_eq : tuple
-        equal constraint. Note: not available yet.
-    constraint_ueq : tuple
-        unequal constraint
-
-    Attributes
-    ----------------------
-    pbest_x : array_like, shape is (pop,dim)
-        best location of every particle in history
-    pbest_y : array_like, shape is (pop,1)
-        best image of every particle in history
-    gbest_x : array_like, shape is (1,dim)
-        general best location for all particles in history
-    gbest_y : float
-        general best image  for all particles in history
-    gbest_y_hist : list
-        gbest_y of every iteration
-
-
-    """
     def __init__(self, Optimization_variables, costfunc,
                  n_dim=None, pop=40, max_iter=150, lb=-1e5, ub=1e5, w=0.8, c1=0.1, c2=0.5,
                  constraint_eq=tuple(), constraint_ueq=tuple(), verbose=False
-                 , dim=None, optimization_target=None,
-                 export_result_dir=None,export_result_file_name=None,
-                 hfss_Optimization_record_dir=None, hfss_Optimization_record_file_name=None):
-        self.export_result_file_path = export_result_dir + '\\' + export_result_file_name  # the path for those output results
-        self.hfss_Optimization_record_file_path = hfss_Optimization_record_dir + '\\' + hfss_Optimization_record_file_name  # the path for optimization record
-        n_dim = n_dim or dim  # support the earlier version
-        print(optimization_target)
-        file = open(self.hfss_Optimization_record_file_path, "a+")
-        file.write(optimization_target)
-        file.close()
-        self.export_result_dir = export_result_dir
-        self.export_result_file_name = export_result_file_name
-        self.hfss_Optimization_record_dir = hfss_Optimization_record_dir
-        self.hfss_Optimization_record_file_name = hfss_Optimization_record_file_name
+                 , dim=None):
 
+        n_dim = n_dim or dim    # support the earlier version
         self.Optimization_variables = Optimization_variables
-        self.costfunc=costfunc #改将cost引入参数
+        self.costfunc=costfunc  # 改将cost引入参数
 
         self.w = w  # inertia
         self.cp, self.cg = c1, c2  # parameters to control personal best, global best respectively
@@ -108,14 +52,6 @@ class PSO(SkoBase):
         self.record_value = {'X': [], 'V': [], 'Y': []}
         self.best_x, self.best_y = self.gbest_x, self.gbest_y  # history reasons, will be deprecated
 
-
-    def check_constraint(self, x):
-        # gather all unequal constraint functions
-        for constraint_func in self.constraint_ueq:
-            if constraint_func(x) > 0:
-                return False
-        return True
-
     def update_V(self):
         r1 = np.random.rand(self.pop, self.n_dim)
 #        r1 = np.random.rand(self.pop, self.n_dim).round(1)
@@ -136,19 +72,9 @@ class PSO(SkoBase):
         self.Y=np.ones((self.pop,1))*float("inf")
         for i in range(0, self.pop):
             # 改
-            cost_function_value=self.costfunc(self.Optimization_variables,self.X[i])
-#           cost_function_value=9999   #for test
+            cost_function_value=self.costfunc(self.X[i])
             self.Y[i,0]=cost_function_value
             print('The pop number is', i, ', parameter is',self.X[i], 'and cost function is', cost_function_value)
-            pop_result='The pop number is'+ str(i) + ', parameter is' + str(self.X[i]) + 'and cost function is' + str(cost_function_value)
-            file=open(self.hfss_Optimization_record_file_path,"a+")
-            file.write(pop_result+"\n")
-            file.close()
-#            print('*** the value of cost function is', cost_function)
-        #print(self.Y,type(self.Y))
-        file=open(self.hfss_Optimization_record_file_path,"a+")
-        file.write('The cost result is'+ str(self.Y)+"\n")
-        file.close()
         return self.Y
 
 
@@ -158,10 +84,6 @@ class PSO(SkoBase):
         :return:
         '''
         self.need_update = self.pbest_y > self.Y
-        for idx, x in enumerate(self.X):
-            if self.need_update[idx]:
-                self.need_update[idx] = self.check_constraint(x)
-
         self.pbest_x = np.where(self.need_update, self.X, self.pbest_x)
         self.pbest_y = np.where(self.need_update, self.Y, self.pbest_y)
 
@@ -216,30 +138,9 @@ class PSO(SkoBase):
     fit = run
 
 if __name__ == '__main__':
-    import os
-
-    hfss_file_dir = r"D:\Cylinder_DRA_study\Temp"
-    if not os.path.exists(hfss_file_dir):
-        os.makedirs(hfss_file_dir)
-    hfss_file_name = f'Cylinder_DRA'
-    hfss_result_file_path = hfss_file_dir + '\\' + hfss_file_name + '.hfssresults'
-
-    export_result_dir = r"D:\Cylinder_DRA_study\Result"
-    if not os.path.exists(export_result_dir):
-        os.makedirs(export_result_dir)
-    export_result_file_name = 'S Parameter.csv'
-    export_result_file_path = export_result_dir + '\\' + export_result_file_name
-
-    hfss_Optimization_record_dir = r"D:\Cylinder_DRA_study\Record"
-    if not os.path.exists(hfss_Optimization_record_dir):
-        os.makedirs(hfss_Optimization_record_dir)
-    hfss_Optimization_record_file_name = f'Record for simulations.txt'
-
     Optimization_variables = 'DR_radius', 'DR_height', 'Monopole_height'
     pso = PSO(Optimization_variables=Optimization_variables,costfunc=costfunction,
               n_dim=3, pop=3, max_iter=3,
-              lb=[8, 16, 4], ub=[12, 24, 14], w=0.8, c1=0.5, c2=0.5,
-              optimization_target='...',
-              export_result_dir=export_result_dir, export_result_file_name=export_result_file_name,
-              hfss_Optimization_record_dir=hfss_Optimization_record_dir, hfss_Optimization_record_file_name=hfss_Optimization_record_file_name)
-    pso.run()
+              lb=[8, 16, 4], ub=[12, 24, 14], w=0.8, c1=0.5, c2=0.5,)
+    xbest,ybest = pso.run()
+    print(xbest,ybest)
