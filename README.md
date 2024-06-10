@@ -56,22 +56,22 @@ The path to an EM expert
 ### **本科和硕士一年级**
 
 1. 完成《Learn Python the Hard Way》的前45章的学习（在线书 https://github.com/ubarredo/LearnPythonTheHardWay ）；
-2. Kraus的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/251 ）；
-3. Pozar的微波工程过一遍（配套练习 https://tbc-python.fossee.in/book-details/814 ）；
-4. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j ）；
-5. MIT Walter Lewin的电磁学视频过一遍（ https://www.bilibili.com/video/BV124411R7r2 ）；
-6. 费曼物理学讲义的电磁部分过一遍（ https://www.feynmanlectures.caltech.edu ）；
-7. 阅读近30年来IEEE APS的获奖文章（ https://ieeeaps.org/about-the-transactions/best-paper-awards ），并汇总成表格，配上文字介绍。
+2. Stanford的Writting in Science过一遍（https://www.bilibili.com/video/BV1L7411n73j ）；
+3. Kraus的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/251 ）；
+4. Pozar的微波工程过一遍（配套练习 https://tbc-python.fossee.in/book-details/814 ）；
+5. 阅读近30年来IEEE APS的获奖文章（ https://ieeeaps.org/about-the-transactions/best-paper-awards ），并汇总成表格，配上文字介绍。
 
 ### **硕士二、三年级**
 
-1. Balanis的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/876 ）；
-2. 梁昌洪的简明微波过一遍（配合他讲的微波技术视频： https://www.bilibili.com/video/av90034984 ）；
-3. Gilbert Strang的Introduction to Linear Algebra视频过一遍（ https://www.bilibili.com/video/BV1zT4y1u7c7 ）；
-4. 姜颖的数学物理方程视频过一遍（https://space.bilibili.com/548272388 ）；
-5. 搞懂CMA方法，学会使用仿真软件的CMA功能作特征模式分析；
-6. 选一种算法，分别实现dipole，patch，slot天线的电磁计算；
-7. 总结近三十年来天线领域的大牛名单，阅读他们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）。
+1. MIT Walter Lewin的电磁学视频过一遍（ https://www.bilibili.com/video/BV124411R7r2 ）；
+2. 费曼物理学讲义的电磁部分过一遍（ https://www.feynmanlectures.caltech.edu ）；
+3. Balanis的天线书过一遍（配套练习 https://tbc-python.fossee.in/book-details/876 ）；
+4. 梁昌洪的简明微波过一遍（配合他讲的微波技术视频： https://www.bilibili.com/video/av90034984 ）；
+5. Gilbert Strang的Introduction to Linear Algebra视频过一遍（ https://www.bilibili.com/video/BV1zT4y1u7c7 ）；
+6. 姜颖的数学物理方程视频过一遍（https://space.bilibili.com/548272388 ）；
+7. 搞懂CMA方法，学会使用仿真软件的CMA功能作特征模式分析；
+8. 选一种算法，分别实现dipole，patch，slot天线的电磁计算；
+9. 总结近三十年来天线领域的大牛名单，阅读他们在IEEE Proceeding的天线文章，和TAP的受邀请天线文章（数量不多，几乎全是精品）。
 
 ### **博士**
 
@@ -117,7 +117,7 @@ The path to an EM expert
 ## 招生
 
 1. 博士：目前，本组博士招生名额有两处来源，中山大学和香港城大。中山大学的招生名额很少，并非每年都有；城大的招生名额几乎每年都有，但数量也很少。无论哪个来源，申请人都需要完成正规的多轮面试流程，并面对多位候选人的竞争。如果想要攻读博士学位，请提前联系本团队老师；
-2. 硕士：常年面向本科生提供科研体验机会（大创，工程训练等，或者体验组会），并欢迎大家留在团队读研。从今年来看，团队的硕士研究生主要来自团队的本科生群体，团队内绝大多数本科生，都已成功保研/考研，并将继续在团队内开展研究工作；
+2. 硕士：常年面向本科生提供科研体验机会（大创，工程训练等，或者体验组会），并欢迎大家留在团队读研。统计来看，团队的硕士研究生主要来自团队的本科生群体，团队内绝大多数本科生，都已成功保研/考研，并将继续在团队内开展研究工作；
 3. 团队目前共有四位导师，按加入中大的时间顺序，先后为梁国华（博导、硕导），杨楠（硕导），陆凯（硕导）和胡鹏飞（硕导）。四位导师深度合作，共同指导组内学生。
 ## 待做
 
