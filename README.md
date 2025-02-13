@@ -90,7 +90,8 @@ The path to an EM expert
 
 1. 顾樵的数学物理方程过一遍，或者姜颖的数学物理方程视频过一遍（https://space.bilibili.com/548272388 ）；
 2. Gilbert Strang的Introduction to Linear Algebra视频过一遍（ https://www.bilibili.com/video/BV1zT4y1u7c7 ）；
-4. Harrington的时谐电磁场过一遍；
+3. Harrington的时谐电磁场过一遍；
+4. Kildal的Fundamentals of Antenna Engineering过一遍；
 5. 陈志豪的应用电磁学讲义过一遍；
 6. 阅读天线领域重要研究组的有影响力的过往文章，形成一份“门派”地图；
 7. 每一期新出的TAP和AWPL都快速刷一遍，并争取形成简要文档记录（比如新天线的结构图汇总）；
